@@ -1,98 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <!--from bootstrap-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-    <link rel="import" href="common/navbar.html">
-    <link rel="stylesheet" href="tablecardstyle.css" type="text/css">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="C:\Users\USER\Desktop\wif2003 wp\project\web\focus-free\themes\focus-free\assets\css\style.css" rel="stylesheet">
         <title>Online Registratioin System : Report Issue</title>
     </head>
 
     <body>
+        <header>
+            Report Issue
+        </header>
+        <nav class="">
+            <a class="nav-link" href="">PROFILE</a>
+            <a class="nav-link" href="">MANAGE PROFILE</a>
+            <a class="nav-item active">
+                <a class="nav-link" href="report.html">REPORT<span class="sr-only">(current)</span></a>
+            </a>
+            <a class="nav-link" href="">FOOD SERVICE</a>
+        </nav>
         <main>
-            <div class="card">
-                <div class="card-header">
-                    <h2><strong>My Issue</strong></h2>
-                    <p>Report and edit my issue(s) in Residential College 8th.</p>
-                </div>
-                <br><br>
-                <div class="card-body">
-                    <h4 class="card-title"><strong>Reported Issue</strong></h4>
-                    <div class="table-responsive">
-                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                        <br>
-                        <table class="table header-border table-responsive-sm">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Report ID</th>
-                                    <th>Problem Category</th>
-                                    <th>Problem Type</th>
-                                    <th>Status</th>
-                                    <th>Report Date-Time</th>
-                                </tr>
-                            </thead>
-                            <tbody id="myTable">
-                                <tr>
-                                    <td>1</td>
-                                    <td>2005091127</td>
-                                    <td>Toilet</td>
-                                    <td>Piping</td>
-                                    <td class="badge badge-pending">Pending</td>
-                                    <td>2020-05-09 11:27</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2005081456</td>
-                                    <td>Study Area</td>
-                                    <td>Internet Connection</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2020-05-08 14:56</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>2003010922</td>
-                                    <td>Cafe</td>
-                                    <td>Cleanliness</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2020-03-01 09:22</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>1911231732</td>
-                                    <td>Volleyball Court</td>
-                                    <td>Facility</td>
-                                    <td class="badge badge-failure">Fail</td>
-                                    <td>2019-11-23 17:32</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <input type="button" class="btn btn-secondary" onclick="location.href='addReport.html';" value="Add New" />
-                        <input type="button" class="btn btn-outline-secondary" onclick="location.href='editReport.html';" value="Edit" />
-                    </div>
-                </div>
-            </div>
+
         </main>
         <footer>
 
         </footer>
-        <script>
-            $(document).ready(function(){
-                $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>
 
     </body>
 </html>
