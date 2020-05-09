@@ -1,0 +1,132 @@
+.card {
+    margin-top: 15px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 1.875rem;
+    background-color: #fff;
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    position: relative;
+    background: transparent;
+    padding: 1.25rem;
+    padding-top: 0px;
+    display: flow;
+    justify-content: left;
+    border: 2px solid transparent;
+    box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.15);
+}
+
+.card-title {
+    padding-top: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+}
+
+.card-body {
+    border: 2px solid transparent;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    box-shadow: 0px 0px 13px 0px rgba(82, 63, 105, 0.15);
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+}
+
+.table-responsive-sm {
+    min-width: 30rem !important;
+    overflow-y: auto;
+}
+
+table {
+    padding-top: 5px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #BDBDC7;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+th {
+    color: #454545;
+    text-align: inherit;
+}
+
+tbody {
+    color: darkslategrey;
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.scrollingTable {
+    width: 30em;
+    overflow-y: auto;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    box-sizing: border-box;
+}
+
+.badge {
+    font-size: 85%;
+    display: inline-block;
+    line-height: 1.5;
+    padding: 2px 2px;
+}
+
+.badge-success {
+    background-color: #7ED321;
+}
+
+.badge-failure {
+    background-color: #FF1616;
+}
+
+.badge-pending {
+    background-color: #FFAA16;
+}
+
+.wrapper.overflow {
+    overflow-y: scroll;
+    display: inline-block;
+}
+button{
+    cursor: pointer;
+}
+
+.btn-rounded {
+    border-radius: 30px !important;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #673BB7;
+    border-color: #673BB7;
+}
+
+.btn-outline-secondary {
+    color: #673BB7;
+    border-color: #673BB7;
+}
