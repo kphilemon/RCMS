@@ -43,7 +43,6 @@
 
 .table-responsive-sm {
     min-width: 30rem !important;
-    overflow-y: auto;
 }
 
 table {
@@ -61,7 +60,7 @@ thead {
 }
 
 tr {
-    display: table-row;
+    display: table-row ;
     vertical-align: inherit;
     border-color: inherit;
 }
@@ -73,14 +72,9 @@ th {
 
 tbody {
     color: darkslategrey;
-    display: table-row-group;
+    display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
-}
-
-.scrollingTable {
-    width: 30em;
-    overflow-y: auto;
 }
 
 td {
@@ -108,10 +102,6 @@ td {
     background-color: #FFAA16;
 }
 
-.wrapper.overflow {
-    overflow-y: scroll;
-    display: inline-block;
-}
 button{
     cursor: pointer;
 }
@@ -130,3 +120,4 @@ button{
     color: #673BB7;
     border-color: #673BB7;
 }
+
