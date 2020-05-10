@@ -1,0 +1,55 @@
+/* activity-basketball.html*/
+
+.activity-image{
+    height: 400px;
+    width: 100%;
+    margin-bottom:10px;
+}
+
+.btn{
+    margin-bottom: 10px;
+
+}
+
+.card-img-top {
+    height: 15rem;
+    object-fit: cover;
+}
+
+.card{
+    margin-bottom: 10px;
+
+}
+
+#sidecard{
+    animation: fade_in_show 0.5s;
+}
+
+@keyframes fade_in_show {
+    0% {
+        opacity: 0;
+        transform: scale(0)
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.activity-image{
+    object-fit: cover;
+}
+
+.alert{
+    display: none;
+
+}
+#registeralertalert{
+    display: none;
+}
+#calendaralert{
+    display: none;
+}
+
+
+

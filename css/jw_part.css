@@ -1,0 +1,60 @@
+#carousel{
+    height: 30%;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+div.carousel-inner {
+    width: 100%;
+  max-height: 100%;
+
+}
+
+
+.carousel-item{
+    object-fit: cover;
+    width: 100%;
+    height: content-box;
+    vertical-align: center;
+    horiz-align: center;
+    align-content: center;
+
+}
+
+
+a.nav-link{
+    color : #3D4465 ;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #593BDB;
+}
+
+.card{
+    width: 300px;
+    min-height: 450px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+
+}
+
+.card-img-top{
+    height: 150px;
+}
+
+.details{
+    height: 100px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+
+
+

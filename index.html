@@ -7,14 +7,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jw_part.css">
+    <title>College Activity Registration</title>
 
-    <title>RCMS</title>
 </head>
 
-<body>
-<h1>Hello, world!</h1>
-</body>
+<body style="background-color:#F3F2F2 ">
+
+<div id="navbar" class="topnav" style="background-color:#593BDB">
+    <center>NAVBAR</center>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+
+        <div class="col-10">
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class=" rounded d-block " src="img/carousel-1.jpg" alt="1">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded d-block " src="img/carousel-2.jpg" alt="2">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded d-block " src="img/carousel-3.jpg" alt="3">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#carousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+            </div>
+
+            <ul class="nav nav-pills flex-column flex-md-row" style="margin-bottom: 10px">
+                <li class="nav-item">
+                    <a href="#all" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        <i class="mdi  d-md-none d-block"></i>
+                        <span class="d-none d-md-block">ALL</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#thisweekend" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                        <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                        <span class="d-none d-md-block">THIS WEEKEND</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#compulsory" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                        <span class="d-none d-md-block">COMPULSORY</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade" id="all">
+                    <div class="row">
+                    <div id="card-swim" class="card d-block">
+                        <img class="card-img-top" src="img/jw_carousel3.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Swimming Class</h5>
+                            <h6 class="card-subtitle" style="color: #593BDB">Sun , 15 Jun 2020 , 4.00 PM</h6>
+                            <div class="details">
+                            <p class="card-text">Learn How to Swim even If you Are Just a Beginner. Swimming Courses Designed For Students. </p>
+                            </div>
+                                <a href="activity-swim.html" class="btn btn-primary">See Details</a>
+                        </div> <!-- end card-body-->
+                    </div><!-- end card-->
+                    <div id="card-dance" class="card d-block">
+                        <img class="card-img-top" src="img/activity-dancing.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Dance Class</h5>
+                            <h6 class="card-subtitle" style="color: #593BDB">Mon , 16 Jun 2020 , 10.00 AM</h6>
+                            <div class="details">
+                            <p class="card-text">Each class is conducted by qualified and well-trained instructors, giving you nothing but the best in quality dancing lessons. </p>
+                            </div>
+                                <a href="activity-dance.html" class="btn btn-primary">See Details</a>
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                        <div id="card-cheer" class="card d-block">
+                            <img class="card-img-top" src="img/activity-cheer.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Cheerleading</h5>
+                                <h6 class="card-subtitle" style="color: #593BDB">Sat , 14 Jun 2020 , 4.00 PM</h6>
+                                <div class="details">
+                                    <p class="card-text">Cheerleading, team activity in which elements of dance and acrobatics are combined with shouted slogans in order to entertain spectators at sporting events</p>
+                                </div>
+                                <a href="activity-cheer.html" class="btn btn-primary">See Details</a>
+                            </div> <!-- end card-body-->
+                        </div><!-- end card-->
+                        <div id="card-basketball" class="card d-block">
+                            <img class="card-img-top" src="img/activity-basketball.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Basketball</h5>
+                                <h6 class="card-subtitle" style="color: #593BDB">Tues , 17 Aug 2020 , 5.00 PM</h6>
+                                <div class="details">
+                                    <p class="card-text">Basketball is a team sport. Two teams of five players each try to score by shooting a ball through a hoop elevated 10 feet above the ground. </p>
+                                </div>
+                                <a href="activity-basketball.html" class="btn btn-primary">See Details</a>
+                            </div> <!-- end card-body-->
+                        </div><!-- end card-->
+                </div>
+
+                </div>
+                <div class="tab-pane fade show active" id="thisweekend">
+                    <div class="row">
+                        <div id="card-cheer" class="card d-block">
+                            <img class="card-img-top" src="img/activity-cheer.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Cheerleading</h5>
+                                <h6 class="card-subtitle" style="color: #593BDB">Sat , 14 Jun 2020 , 4.00 PM</h6>
+                                <div class="details">
+                                    <p class="card-text">Cheerleading, team activity in which elements of dance and acrobatics are combined with shouted slogans in order to entertain spectators at sporting events</p>
+                                </div>
+                                <a href="activity-cheer.html" class="btn btn-primary">See Details</a>
+                            </div> <!-- end card-body-->
+                        </div><!-- end card-->
+                        <div id="card-swim" class="card d-block">
+                            <img class="card-img-top" src="img/jw_carousel3.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Swimming Class</h5>
+                                <h6 class="card-subtitle" style="color: #593BDB">Sun , 15 Jun 2020 , 4.00 PM</h6>
+                                <div class="details">
+                                    <p class="card-text">Learn How to Swim even If you Are Just a Beginner. Swimming Courses Designed For Students. </p>
+                                </div>
+                                <a href="activity-swim.html" class="btn btn-primary">See Details</a>
+                            </div> <!-- end card-body-->
+                        </div><!-- end card-->
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="compulsory">
+                    <div class="row">
+                    <div id="card-basketball" class="card d-block">
+                        <img class="card-img-top" src="img/activity-basketball.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Basketball</h5>
+                            <h6 class="card-subtitle" style="color: #593BDB">Tues , 17 Aug 2020 , 5.00 PM</h6>
+                            <div class="details">
+                                <p class="card-text">Basketball is a team sport. Two teams of five players each try to score by shooting a ball through a hoop elevated 10 feet above the ground. </p>
+                            </div>
+                            <a href="activity-basketball.html" class="btn btn-primary ">See Details</a>
+                        </div> <!-- end card-body-->
+                    </div><!-- end card-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col"></div>
+
+
+
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    </body>
 
 </html>

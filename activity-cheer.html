@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jw_activity.css">
+    <title>Cheerleading</title>
+</head>
+
+<body style="background-color: #F3F2F2;">
+
+<div id="navbar" class="topnav" style="background-color:darkcyan">
+    <div style="text-align: center;">NAVBAR</div>
+</div>
+
+<div  class="row justify-content-md-center"style="margin-top: 10px ;">
+    <div id="registeralert" class="alert alert-success alert-dismissable col-lg-auto">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Successfully Registered!
+    </div>
+</div>
+
+<div  class="row justify-content-md-center"style="margin-top: 10px ;">
+    <div id="calendaralert" class="alert alert-success alert-dismissable col-lg-auto">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Successfully Added to Calender!
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col"></div>
+
+        <div class="col-10">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <!-- col 8 -->
+                    <div class="col-8" >
+                        <img class="rounded activity-image" src="img/activity-cheer.jpg"  alt="...">
+
+
+                        <div class="card border-secondary border" style="width: 100% ; height: auto;">
+                            <div class="card-body">
+                                <div class="container-fluid" >
+                                    <div class="row">
+                                        <div class="col-8" style="margin-bottom: 20px">
+                                            <h4 class="card-title">Cheerleading</h4>
+                                            <h6 class="card-subtitle" style="color: #593BDB">Sat , 14 Jun 2020 , 4.00 PM</h6>
+
+                                        </div>
+
+                                        <div id="register button" class="col" style="align-items: end ; width: 100%;">
+                                            <a id="cancelbtn" onclick="calendarclick()" class="btn btn-outline-primary" style="width: 100% ; border-color: #593BDB ; color: #593BDB">Add to Calendar</a>
+
+
+                                            <button id="registerbtn"  onclick="registerclick()" class="btn btn-primary" style="width: 100% ; border-color: #593BDB ; color: white;background-color: #593BDB">Register</button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <p style="margin-left: 10px ; margin-right: 10px;">Cheerleading, team activity in which elements of dance and acrobatics are combined with shouted slogans in order to entertain spectators at sporting events</p>
+
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div>
+
+
+
+                    <!-- col 4 -->
+                    <div id="sidecard" class="col">
+
+                        <div class="card">
+                            <div class="row no-gutters align-items-center">
+                                <a href="activity-swim.html" class="stretched-link"></a>
+
+                                <div class="col-md-4">
+                                    <img src="img/jw_carousel3.jpg" class="card-img-top img-fluid" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Swimming</h5>
+                                        <p class="card-text">Learn How to Swim even If you Are Just a Beginner. Swimming Courses Designed For Students. </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end col -->
+                            </div>
+                        </div><!-- end row-->
+
+                        <div class="card">
+                            <div class="row no-gutters align-items-center">
+                                <a href="activity-basketball.html" class="stretched-link"></a>
+
+                                <div class="col-md-4">
+                                    <img src="img/activity-basketball.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Basketbal</h5>
+                                        <p class="card-text">Basketball is a team sport. Two teams of five players each try to score by shooting a ball through a hoop elevated 10 feet above the ground.</p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end col -->
+                            </div>
+                        </div><!-- end row-->
+
+                        <div class="card">
+                            <div class="row no-gutters align-items-center">
+                                <a href="activity-dance.html" class="stretched-link"></a>
+
+                                <div class="col-md-4">
+                                    <img src="img/activity-dancing.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dance Class</h5>
+                                        <p class="card-text">Each class is conducted by qualified and well-trained instructors, giving you nothing but the best in quality dancing lessons. </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end col -->
+                            </div>
+                        </div><!-- end row-->
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col"></div>
+    </div>
+</div>
+
+
+<!-- script -->
+<script>
+    function registerclick(){
+        $('#registeralert').show();
+    }
+
+    function calendarclick(){
+        $('#calendaralert').show();
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
