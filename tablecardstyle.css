@@ -106,10 +106,6 @@ button{
     cursor: pointer;
 }
 
-.btn-rounded {
-    border-radius: 30px !important;
-}
-
 .btn-secondary {
     color: #fff;
     background-color: #673BB7;
