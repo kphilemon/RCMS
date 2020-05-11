@@ -46,10 +46,14 @@
                         <label for="problemlocatioin">Problem Location: </label><br>
                         <input id="problemlocatioin" type="text" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="problem_img">Image Attachment: </label><br>
+                        <input type="file" id="problem_img" name="img" accept="image/*">
+                    </div>
                     <br>
                     <div class="form-group">
                         <label>
-                            <input type="submit" class="btn btn-secondary" style="color: #fff;background-color: #673BB7;border-color: #673BB7;" id="AddNew" value="Report" formmethod="get" formaction="" onclick="alertSubmit(); location.href='report.html'"></label>
+                            <input type="submit" class="btn btn-secondary" style="color: #fff;background-color: #673BB7;border-color: #673BB7;" id="AddNew" value="Report" onclick="alertSubmit(); location.href='report.html'"></label>
                             <input type="button" class="btn btn-outline-secondary" style="color: #673BB7;border-color: #673BB7;" onclick="location.href='report.html';" value="Cancel"/>
                     </div>
                 </form>
