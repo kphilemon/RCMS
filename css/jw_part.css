@@ -35,7 +35,7 @@ a.nav-link{
 
 .card{
     width: 300px;
-    min-height: 450px;
+    height: 250px;
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -49,10 +49,11 @@ a.nav-link{
 }
 
 .details{
-    height: 100px;
-    overflow-y: auto;
+    height: 50px;
+    overflow-y: hidden;
+    max-lines: 2;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
