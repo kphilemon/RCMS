@@ -89,7 +89,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-created" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-created" onclick="UserProfile()">Save Changes</button>
+                                        <button type="submit" class="btn btn-created">Save Changes</button>
                                     </div>
                                 </form>
 
@@ -370,27 +370,7 @@
 
 
     window.onload = function () {
-        // check for password validity
-        document.getElementById("passForm").onsubmit = function(e) {
-            var y1 = this.newPass.value;
-            var y2 = this.retypePass.value;
-
-            if (y1==y2 ) {
-                e.preventDefault()
-                $('#changePass').modal('hide');
-                return true;
-            }
-            return false;
-        }
-
-    };
-
-    var prev_handler = window.onload;
-    window.onload = function () {
-        if (prev_handler) {
-            prev_handler();
-        }
-        //check for form validity and submit and saved
+        // check for form validity
         document.getElementById("details").onsubmit = function(e) {
             var x1 = this.validationCustom01.value;
             var x2 = this.validationCustom02.value;
@@ -413,7 +393,25 @@
             }
             return false;
         }
+    };
 
+    var prev_handler = window.onload;
+    window.onload = function () {
+        if (prev_handler) {
+            prev_handler();
+        }
+        //check for password
+        document.getElementById("passForm").onsubmit = function(e) {
+            var y1 = this.newPass.value;
+            var y2 = this.retypePass.value;
+
+            if (y1==y2) {
+                e.preventDefault()
+                $('#changePass').modal('hide');
+                return true;
+            }
+            return false;
+        }
     };
 
     //remove the attributes of disabled
