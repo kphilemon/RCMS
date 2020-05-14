@@ -7,123 +7,121 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--datatable-->
-    <link rel="stylesheet" href="stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css.dataTables.bootstraps4.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <link rel="import" href="common/navbar.html">
-    <link rel="stylesheet" href="tablecardstyle.css" type="text/css">
+    <link rel="stylesheet" href="css/table-card-style.css" type="text/css">
     <head>
-        <title>Report Issue</title>
+        <title>Online Registratioin System : Report Issue</title>
     </head>
 
-    <body onload="editable()">
-        <main>
+    <body onload="editable()" >
+        <div class="container">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header card-title">
                     <h2><strong>My Issue</strong></h2>
                     <p>Report and edit my issue(s) in Residential College 8th.</p>
                 </div>
                 <div class="card-body">
                     <div class="container">
-                        <!--<input class="form-control" id="myInput" type="text" placeholder="Search..">-->
-                        <input type="button" class="btn btn-secondary" style="float: right" onclick="location.href='addReport.html';" value="Add New" />
-                        <table class="table header-border table-responsive-sm" id="table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Report ID</th>
-                                    <th>Problem Category</th>
-                                    <th>Problem Type</th>
-                                    <th>Status</th>
-                                    <th>Report Date-Time</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="myTable">
-                                <tr id="2005091127">
-                                    <td></td>
-                                    <td>2005091127</td>
-                                    <td>Toilet</td>
-                                    <td>Piping</td>
-                                    <td class="badge badge-pending">Pending</td>
-                                    <td>2020-05-09 11:27</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="2005081456">
-                                    <td></td>
-                                    <td>2005081456</td>
-                                    <td>Study Area</td>
-                                    <td>Internet Connection</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2020-05-08 14:56</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="2003010922">
-                                    <td></td>
-                                    <td>2003010922</td>
-                                    <td>Cafe</td>
-                                    <td>Cleanliness</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2020-03-01 09:22</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="1911231732">
-                                    <td></td>
-                                    <td>1911231732</td>
-                                    <td>Volleyball Court</td>
-                                    <td>Facility</td>
-                                    <td class="badge badge-failure">Incompleted</td>
-                                    <td>2019-11-23 17:32</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="1911091127">
-                                    <td></td>
-                                    <td>1911091127</td>
-                                    <td>Toilet</td>
-                                    <td>Piping</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2019-11-09 11:27</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="1910081456">
-                                    <td></td>
-                                    <td>1910081456</td>
-                                    <td>Room</td>
-                                    <td>Furniture</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2019-10-08 14:56</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="1909300922">
-                                    <td></td>
-                                    <td>1909300922</td>
-                                    <td>Cafe</td>
-                                    <td>Cleanliness</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2019-09-30 09:22</td>
-                                    <td></td>
-                                </tr>
-                                <tr id="1909231732">
-                                    <td></td>
-                                    <td>1909231732</td>
-                                    <td>Room</td>
-                                    <td>Furniture</td>
-                                    <td class="badge badge-success">Completed</td>
-                                    <td>2019-09-23 17:32</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <!--<input class="form-control" id="myInput" type="text" placeholder="Search..">-->
+                            <input type="button" class="btn btn-secondary" style="float: right" onclick="location.href='addReport.html';" value="Add New" />
+                            <table class="table header-border table-responsive-sm" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Report ID</th>
+                                        <th>Problem Category</th>
+                                        <th>Problem Type</th>
+                                        <th>Status</th>
+                                        <th>Report Date-Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                    <tr>
+                                        <td></td>
+                                        <td>2005091127</td>
+                                        <td>Toilet</td>
+                                        <td>Piping</td>
+                                        <td><span class="badge badge-pending">Pending</span></td>
+                                        <td>2020-05-09 11:27</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>2005081456</td>
+                                        <td>Study Area</td>
+                                        <td>Internet Connection</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2020-05-08 14:56</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>2003010922</td>
+                                        <td>Cafe</td>
+                                        <td>Cleanliness</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2020-03-01 09:22</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1912231732</td>
+                                        <td>Volleyball Court</td>
+                                        <td>Facility</td>
+                                        <td><span class="badge badge-failure">Incompleted</span></td>
+                                        <td>2019-12-23 17:32</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1912221127</td>
+                                        <td>Toilet</td>
+                                        <td>Piping</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2019-12-22 11:27</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1910301456</td>
+                                        <td>Study Area</td>
+                                        <td>Internet Connection</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2019-10-30 14:56</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1910030922</td>
+                                        <td>Cafe</td>
+                                        <td>Cleanliness</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2019-10-03 09:22</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1909231732</td>
+                                        <td>Volleyball Court</td>
+                                        <td>Facility</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                        <td>2019-09-23 17:32</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
-        <footer>
+        </div>
 
-        </footer>
         <script>
-            //search table algorithm
             $(document).ready(function(){
                 $("#myInput").on("keyup", function() {
                     var value = $(this).val().toLowerCase();
@@ -133,17 +131,16 @@
                 });
             });
 
-            <!-- show action based on badge  -->
             function editable(){
-                var rowNum = document.getElementsByTagName("TR").length;
+                var row = document.getElementsByTagName("TR").length;
                 var i;
-                for(i=1;i<rowNum;i++) {
-                    var match = document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[4].getAttribute("class");
-                    if (match==="badge badge-pending") {
-                        document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].innerHTML = "Edit";
+                for(i=1;i<row;i++){
+                    if(document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[4].getAttribute("class")==="badge badge-pending"){
+                        document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].innerHTML="Edit";
                         document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].setAttribute("onclick","location.href='editReport.html';");
-                    } else {
-                        document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].innerHTML = "Delete";
+                    }
+                    else{
+                        document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].innerHTML="Delete";
                         document.getElementsByTagName("TR")[i].getElementsByTagName("TD")[6].setAttribute("onclick","deleteRow(this)");
                     }
                 }
@@ -155,24 +152,24 @@
             }
         </script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $('#table').DataTable({
-            searching : false,
-            ordering : false,
-            lengthMenu :[[-1,5,10,25,50],["All",5,10,25,50]],
-            createdRow : function (row,data,index){
-                if (data[5].replace(/[\$,]/g, '')*1>150000){
-                    $('td',row).eq(5).addClass('text-success');
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $('#table').DataTable({
+                searching: false,
+                ordering: false,
+                lengthMenu: [[-1,5,10,25,50],["All",5,10,25,50]],
+                createdRow: function(row,data,index){
+                    if(data[5].replace(/[\$,]/g, '')*1>150000){
+                        $('td',row).eq(5).addClass('text-success');
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
 
     </body>
 </html>
