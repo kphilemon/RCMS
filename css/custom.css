@@ -255,6 +255,91 @@ a {
     color: var(--primary) !important;
 }
 
+.table-responsive {
+    display: block;
+    width: 100%;
+    padding-right: 40px;
+}
+
+.table-responsive-sm {
+    min-width: 30rem !important;
+}
+
+table {
+    font-size: small;
+    padding-top: 5px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #BDBDC7;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+th {
+    color: #454545;
+    text-align: inherit;
+}
+
+tbody {
+    color: darkslategrey;
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table tbody {
+    counter-reset: rowNumber;
+}
+
+table tbody tr {
+    counter-increment: rowNumber;
+}
+
+table tbody tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    box-sizing: border-box;
+}
+
+.badge {
+    font-size: 85%;
+    display: inline-block;
+    padding: 13px 13px;
+    font-weight: 800;
+    line-height: 2px;
+    text-align: center;
+    white-space: normal;
+    vertical-align: baseline;
+}
+
+.badge-success {
+    background-color: #7ED321;
+}
+
+.badge-failure {
+    background-color: #FF1616;
+}
+
+.badge-pending {
+    background-color: #FFAA16;
+}
 
 #sidecard {
     animation: fade_in_show 0.5s;
