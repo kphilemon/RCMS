@@ -1,3 +1,4 @@
+//select date
 $('.myCalendar').calendar({
     date: new Date(),
     autoSelect: false, // false by default
@@ -9,10 +10,6 @@ $('.myCalendar').calendar({
 
 //open, close modal
 var modal = document.querySelector('.bg-modal');
-
-document.querySelector('.button1').addEventListener('click', function () {
-    modal.style.display = 'none';
-});
 
 document.querySelector('.btn-order').addEventListener('click', function () {
     modal.style.display = 'flex';
@@ -59,6 +56,7 @@ $('.input-group').on('click', '.button-minus', function(e) {
     decrementValue(e);
 });
 
+//get order
 function getDetails(){
     document.getElementById("confirmBut").onclick=function(){
         var fr = document.getElementById("friedRice").value;
@@ -112,5 +110,11 @@ function getDetails(){
 
         }
         modal.style.display = "none";
+        document.querySelector(".button1").style.display = 'block';
     }
 }
+
+//cancel order
+document.querySelector('.button1').addEventListener('click', function () {
+    document.getElementById("date-food").textContent = '';
+});
