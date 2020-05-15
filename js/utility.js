@@ -22,7 +22,7 @@ function storageAvailable(type) {
     }
 }
 
-function isLoggedIn() {
+function isSignedIn() {
     if (!storageAvailable('localStorage')) {
         // skip checking if storage is not available
         console.log('skipping auth... logged in')
@@ -44,26 +44,26 @@ function isLoggedIn() {
     return false;
 }
 
-function logIn() {
+function signIn() {
     if (storageAvailable('localStorage')) {
         localStorage.setItem('status', 'loggedIn')
         console.log('logging in...')
     }
 }
 
-function logOut() {
+function signOut() {
     localStorage.removeItem('status')
     console.log('logging out...')
 }
 
 function loadNavBar(targetId, activeNavLinkId) {
 
-    if (isLoggedIn()) {
-        $(targetId).load('../common/navbar/logged-in.html', function () {
+    if (isSignedIn()) {
+        $(targetId).load('../common/navbar/signed-in.html', function () {
             $('#pages').find('.active').removeClass('active');
             $('#pages ' + activeNavLinkId).addClass('active');
         });
     } else {
-        $(targetId).load('../common/navbar/logged-out.html');
+        $(targetId).load('../common/navbar/signed-out.html');
     }
 }

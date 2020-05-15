@@ -1,17 +1,5 @@
 /* activity-basketball.html*/
 
-.activity-image{
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom:10px;
-}
-
-.btn{
-    margin-bottom: 10px;
-
-}
-
 
 
 .card-img-top{
@@ -61,17 +49,6 @@ h5,.card-text{
         opacity: 1;
         transform: scale(1)
     }
-}
-
-.alert{
-    display: none;
-
-}
-#registeralertalert{
-    display: none;
-}
-#calendaralert{
-    display: none;
 }
 
 
