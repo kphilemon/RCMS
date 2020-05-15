@@ -157,9 +157,14 @@ a {
     box-shadow: 0 0 0 0.1rem var(--secondary-dark);
 }
 
-.btn-profile {
+.btn-profile-sm {
     min-height: 38px;
     min-width: 38px;
+}
+
+.btn-profile-bg {
+    min-height: 80px;
+    min-width: 80px;
 }
 
 .carousel-item {

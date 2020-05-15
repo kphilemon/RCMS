@@ -25,14 +25,12 @@ $('#modals #m2').load('common/modal/sign-in.html', function () {
     $('#form-sign-in').submit(function () {
         $('#modal-sign-in').modal('hide');
         signIn();
-        window.location.href = 'index.html';
     })
 });
 $('#modals #m3').load('common/modal/sign-up.html', function f() {
     $('#form-sign-up').submit(function () {
         $('#modal-sign-up').modal('hide');
-        signIn()
-        window.location.href = 'profile.html';
+        signIn();
     })
 });
 $('#modals #m5').load('common/modal/pw-forget.html', function () {
