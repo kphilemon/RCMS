@@ -1,15 +1,9 @@
 {
-  "name": "vendor_name/RCMS",
-  "description": "description",
+  "name": "RCMS",
+  "description": "A simple residential college management web application.",
   "minimum-stability": "stable",
-  "license": "proprietary",
-  "authors": [
-    {
-      "name": "User",
-      "email": "email@example.com"
-    }
-  ],
+  "license": "MIT",
   "require": {
-    
+    "ext-pdo": "*"
   }
 }

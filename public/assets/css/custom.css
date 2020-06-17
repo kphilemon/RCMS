@@ -12,6 +12,17 @@
     --text-secondary: #6E707E;
 }
 
+/* Nav bar navigation highlighting */
+#home #nav-home, #issues #nav-issues, #food #nav-food, #accommodation #nav-accommodation,
+#my-activities #nav-my-activities, #profile #nav-profile {
+    color: #fff;
+}
+
+#profile #nav-menu-profile {
+    color: #fff;
+    text-decoration: none;
+    background-color: var(--primary-dark);
+}
 
 /* General styles */
 body {
@@ -19,8 +30,13 @@ body {
 }
 
 main {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 5.5rem;
+    padding-bottom: 3rem;
+    position: relative;
+}
+
+.sticky-top{
+    top: 5.5rem;
 }
 
 a {
@@ -243,6 +259,12 @@ a {
     border: 1px solid #EAEAEA;
 }
 
+.overlay-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .text-primary {
     color: var(--text-primary) !important;
 }
@@ -253,92 +275,6 @@ a {
 
 .text-primary-purple {
     color: var(--primary) !important;
-}
-
-.table-responsive {
-    display: block;
-    width: 100%;
-    padding-right: 40px;
-}
-
-.table-responsive-sm {
-    min-width: 30rem !important;
-}
-
-table {
-    font-size: small;
-    padding-top: 5px;
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #BDBDC7;
-}
-
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-
-th {
-    color: #454545;
-    text-align: inherit;
-}
-
-tbody {
-    color: darkslategrey;
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-
-table tbody {
-    counter-reset: rowNumber;
-}
-
-table tbody tr {
-    counter-increment: rowNumber;
-}
-
-table tbody tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
-    margin-right: 0.5em;
-}
-
-td {
-    display: table-cell;
-    vertical-align: inherit;
-    box-sizing: border-box;
-}
-
-.badge {
-    font-size: 85%;
-    display: inline-block;
-    padding: 13px 13px;
-    font-weight: 800;
-    line-height: 2px;
-    text-align: center;
-    white-space: normal;
-    vertical-align: baseline;
-}
-
-.badge-success {
-    background-color: #7ED321;
-}
-
-.badge-failure {
-    background-color: #FF1616;
-}
-
-.badge-pending {
-    background-color: #FFAA16;
 }
 
 #sidecard {

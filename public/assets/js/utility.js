@@ -55,15 +55,3 @@ function signOut() {
     localStorage.removeItem('status')
     console.log('logging out...')
 }
-
-function loadNavBar(targetId, activeNavLinkId) {
-
-    if (isSignedIn()) {
-        $(targetId).load('../common/navbar/signed-in.html', function () {
-            $('#pages').find('.active').removeClass('active');
-            $('#pages ' + activeNavLinkId).addClass('active');
-        });
-    } else {
-        $(targetId).load('../common/navbar/signed-out.html');
-    }
-}
