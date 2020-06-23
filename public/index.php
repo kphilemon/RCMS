@@ -5,12 +5,11 @@ include '../src/models/Database.php';
 session_start();
 
 
-
 if (preg_match('/^(\/?|\/(home|activities)\/?)$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_RCMS;
     include '../src/modules/home/home.php';
 
-} elseif (preg_match('/^\/activities\/\w+\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/activities\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ACTIVITY;
     include '../src/modules/activity/activity-details.php';
 
@@ -22,11 +21,11 @@ if (preg_match('/^(\/?|\/(home|activities)\/?)$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ISSUES;
     include '../src/modules/issues/issues.php';
 
-} elseif (preg_match('/^\/issues\/\w+\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/issues\/(\d+|new)\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ISSUES;
     include '../src/modules/issues/issues-details.php';
 
-} elseif (preg_match('/^\/food\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/food(\/\d{4}-\d{2}-\d{2})?\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_FOOD;
     include '../src/modules/food/food.php';
 
@@ -34,15 +33,19 @@ if (preg_match('/^(\/?|\/(home|activities)\/?)$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ACCOMMODATION;
     include '../src/modules/accommodation/accommodation.php';
 
-} elseif (preg_match('/^\/accommodation\/\w+\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/accommodation\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ACCOMMODATION;
     include '../src/modules/accommodation/accommodation-details.php';
+
+} elseif (preg_match('/^\/accommodation\/new\/?$/i', $_SERVER['REQUEST_URI'])) {
+    $GLOBALS['title'] = TITLE_ACCOMMODATION;
+    include '../src/modules/accommodation/accommodation-new.php';
 
 } elseif (preg_match('/^\/profile\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_PROFILE;
     include '../src/modules/profile/profile.php';
 
-} elseif (preg_match('/^\/api(\/[^\s\/]+)+/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/api(\/[^\s\/]+)+\/?$/i', $_SERVER['REQUEST_URI'])) {
     include '../src/api/handler.php';
 
 } else {

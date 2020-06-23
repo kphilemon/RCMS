@@ -4,6 +4,7 @@
   "minimum-stability": "stable",
   "license": "MIT",
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-json": "*"
   }
 }

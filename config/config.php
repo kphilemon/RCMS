@@ -16,7 +16,24 @@ define('TITLE_NOT_FOUND', 'Not found');
 
 define('CAROUSEL_IMAGES_PATH', realpath($_SERVER['DOCUMENT_ROOT'] . '/assets/img/carousel/'));
 
-define('DATABASE', 'RCMS');
+define('DATABASE_NAME', 'RCMS');
+define('DATABASE_USERNAME', 'root');
+define('DATABASE_PASSWORD', '');
+
 define('STATUS_PENDING', 0);
+define('STATUS_IN_PROGRESS', 1);
+define('STATUS_COMPLETED', 2);
+
+define('STATUS_SUBMITTED', 0);
 define('STATUS_APPROVED', 1);
 define('STATUS_REJECTED', 2);
+
+define('ACCOMMODATION_UPLOAD_PATH', '../uploads/accommodation/');
+define('ISSUES_UPLOAD_PATH', '../uploads/issues/');
+
+if (!is_dir(ACCOMMODATION_UPLOAD_PATH)) {
+    mkdir(ACCOMMODATION_UPLOAD_PATH, 0755, true);
+}
+if (!is_dir(ISSUES_UPLOAD_PATH)) {
+    mkdir(ISSUES_UPLOAD_PATH, 0755, true);
+}

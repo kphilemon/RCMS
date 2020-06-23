@@ -2,53 +2,18 @@
 redirect_if_profile_incomplete();
 include '../src/templates/header.php';
 include '../src/templates/navbar.php';
+include '../src/models/ActivityModel.php';
+
+$db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
+$activity_model = new ActivityModel($db->getConnection());
 
 $carousel_images = array_diff(scandir(CAROUSEL_IMAGES_PATH, SCANDIR_SORT_DESCENDING), array('.', '..'));
 
 // read from db and populate these arrays
-$all_activities = [
-    ['name' => 'Swimming',
-        'img' => '/assets/img/activities/activity-0000.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0000'],
-    ['name' => 'Dancing',
-        'img' => '/assets/img/activities/activity-0001.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0001'],
-    ['name' => 'Cheer leading',
-        'img' => '/assets/img/activities/activity-0002.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0002'],
-    ['name' => 'Basketball',
-        'img' => '/assets/img/activities/activity-0003.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0003'],
 
-];
-$this_weekend_activities = [
-    ['name' => 'Swimming',
-        'img' => '/assets/img/activities/activity-0000.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0000'],
-    ['name' => 'Dancing',
-        'img' => '/assets/img/activities/activity-0001.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0001'],
-    ['name' => 'Cheer leading',
-        'img' => '/assets/img/activities/activity-0002.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0002'],
-];
-$compulsory_activities = [
-    ['name' => 'Swimming',
-        'img' => '/assets/img/activities/activity-0000.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0000'],
-    ['name' => 'Basketball',
-        'img' => '/assets/img/activities/activity-0003.jpg',
-        'date' => '20 May, 2020',
-        'id' => '0003']
-];
+$all_activities = $activity_model->getAllActivities() ;
+$this_weekend_activities = $activity_model->getThisWeekendActivities() ;
+$this_month_activities = $activity_model->getThisMonthActivities() ;
 ?>
 
 <main class="container">
@@ -82,7 +47,7 @@ $compulsory_activities = [
     <nav class="nav nav-tabs mb-4" id="tabs">
         <a class="nav-item nav-link px-4 active" href="#all" data-toggle="tab">All</a>
         <a class="nav-item nav-link" href="#this-weekend" data-toggle="tab">This Weekend</a>
-        <a class="nav-item nav-link" href="#compulsory" data-toggle="tab">Compulsory</a>
+        <a class="nav-item nav-link" href="#this-month" data-toggle="tab">This Month</a>
     </nav>
 
     <div class="tab-content">
@@ -94,7 +59,8 @@ $compulsory_activities = [
                         <div class="card raised-card">
                             <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
                             <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= $activity['date'] ?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date'])) ?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
                                 <div class="details-big text-primary my-2">
                                     <h5 class="card-title"><?= $activity['name'] ?></h5>
                                 </div>
@@ -115,7 +81,8 @@ $compulsory_activities = [
                         <div class="card raised-card">
                             <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
                             <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= $activity['date'] ?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date'])) ?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
                                 <div class="details-big text-primary my-2">
                                     <h5 class="card-title"><?= $activity['name'] ?></h5>
                                 </div>
@@ -128,15 +95,16 @@ $compulsory_activities = [
             </div>
         </div>
 
-        <div class="tab-pane fade " id="compulsory">
+        <div class="tab-pane fade " id="this-month">
             <div class="row">
 
-                <?php foreach ($compulsory_activities as $activity): ?>
+                <?php foreach ($this_month_activities as $activity): ?>
                     <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
                         <div class="card raised-card">
                             <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
                             <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= $activity['date'] ?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date']))?></h6>
+                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
                                 <div class="details-big text-primary my-2">
                                     <h5 class="card-title"><?= $activity['name'] ?></h5>
                                 </div>

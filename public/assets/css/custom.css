@@ -35,12 +35,12 @@ main {
     position: relative;
 }
 
-.sticky-top{
-    top: 5.5rem;
+.clickable {
+    cursor: pointer;
 }
 
-a {
-    color: var(--primary);
+.sticky-top {
+    top: 5.5rem;
 }
 
 .bg-nav {
@@ -222,6 +222,23 @@ a {
     border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
+.food-img-left {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: calc(0.25rem - 1px);
+}
+
+.food-counter-btn {
+    width: 2.5rem;
+}
+
+.food-counter-border {
+    border-top: 1px solid var(--primary) !important;
+    border-bottom: 1px solid var(--primary) !important;
+
+}
+
 .card {
     border: 0;
     transition: 0.3s;
@@ -275,6 +292,42 @@ a {
 
 .text-primary-purple {
     color: var(--primary) !important;
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-item.disabled .page-link {
+    opacity: 50%;
+}
+
+.page-link {
+    color: var(--primary);
+}
+
+.custom-file-label::after {
+    content: attr(text);
+}
+
+.custom-file-input {
+    cursor: pointer;
+}
+
+.fc-button-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.fc-button-primary:disabled {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    opacity: 50%;
+}
+
+.fc-day {
+    cursor: pointer;
 }
 
 #sidecard {
