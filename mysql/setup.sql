@@ -52,8 +52,9 @@ CREATE TABLE student
     zip           VARCHAR(10)
 );
 # Test account
+# email: test@siswa.um.edu.my, password: test123
 INSERT INTO student (activated, hash, name, email, matrix_no, college_id, faculty, course, password)
-VALUES (1, 'hash', 'test account', 'test@siswa.um.edu.my', 123456, 7, 'faculty', 'course', 'test123');
+VALUES (1, 'hash', 'test account', 'test@siswa.um.edu.my', 123456, 7, 'faculty', 'course', 'cc03e747a6afbbcbf8be7668acfebee5');
 
 ########################################################################################################################
 

@@ -26,6 +26,11 @@ let table = $('#table').DataTable({
             }
             return '<span class="badge badge-' + badge + '">' + word + '</span>';
         }
+    }, {
+        "targets": 6,
+        "render": function () {
+
+        }
     }],
     "order": [[1, 'asc']],
     "language": {

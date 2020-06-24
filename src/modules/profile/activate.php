@@ -77,7 +77,8 @@ if (!$server_err && !$activated && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <?php if (!$password_ok): ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Your password does not fulfil the requirement (must consist of uppercase, lowercase, letter and longer than 8). Please try again.
+                        Your password does not fulfil the requirement (must consist of uppercase, lowercase, letter and
+                        longer than 8). Please try again.
                         <button type="button" class="close" data-dismiss="alert">
                             <span>&times;</span>
                         </button>
@@ -95,7 +96,9 @@ if (!$server_err && !$activated && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
                 <div class="text-center">
                     <form class="form-activate" id="activate-form" action="" method="post" novalidate>
-                        <h4 class="mt-5 mb-3 font-weight-normal">Set your password<br>to activate your account</h4>
+                        <h4 class="mt-5 font-weight-normal">Set your password<br>to activate your account
+                            for<br></h4>
+                        <h5 class="mb-3"><?= $data['email'] ?></h5>
 
                         <div class="form-group mt-5">
                             <input type="password" class="form-control" name="password" id="ac-password"
@@ -123,7 +126,6 @@ if (!$server_err && !$activated && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-<script src="/assets/js/utility.js"></script>
 <script src="/assets/js/core.js"></script>
 <script src="/assets/js/activate.js"></script>
 <script src="https://unpkg.com/pure-md5@latest/lib/index.js"></script>

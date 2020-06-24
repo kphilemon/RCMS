@@ -211,7 +211,6 @@ if (isset($_SESSION['user_id'])) {
 
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-<script src="/assets/js/utility.js"></script>
 <script src="/assets/js/core.js"></script>
 <script src="/assets/js/food.js"></script>
 <script src='/assets/js/vendor/fullcalendar-core.js'></script>

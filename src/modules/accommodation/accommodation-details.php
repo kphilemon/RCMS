@@ -1,4 +1,5 @@
 <?php
+redirect_if_profile_incomplete();
 include '../src/templates/header.php';
 include '../src/templates/navbar.php';
 include '../src/models/AccommodationModel.php';
@@ -143,7 +144,6 @@ if (isset($_SESSION['user_id'])) {
 
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-<script src="/assets/js/utility.js"></script>
 <script src="/assets/js/core.js"></script>
 <script src="/assets/js/accommodation-form.js"></script>
 

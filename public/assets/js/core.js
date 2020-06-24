@@ -59,6 +59,7 @@ $('#si-form').submit(function (event) {
     }
 
     if (emailOK && passwordOK) {
+        $("#si-button").attr("disabled", "disabled");
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -68,6 +69,7 @@ $('#si-form').submit(function (event) {
             contentType: false,
             processData: false,
             success: function (data) {
+                $("#si-button").removeAttr("disabled");
                 console.log(data)
                 if (window.location.href.includes('activate')) {
                     window.location.href = '/profile';
@@ -76,12 +78,13 @@ $('#si-form').submit(function (event) {
                 }
             },
             error: function (xhr) {
+                $("#si-button").removeAttr("disabled");
+                console.log(xhr)
                 if (xhr.status === 400) {
                     // Bad request
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         for (let key in response.error) {
                             if (response.error.hasOwnProperty(key)) {
                                 showError('#' + key, response.error[key]);
@@ -92,7 +95,6 @@ $('#si-form').submit(function (event) {
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         $('#si-alert > span').text(response.error);
                         $('#si-alert').show();
                     }
@@ -117,6 +119,7 @@ $('#su-form').submit(function (event) {
     }
 
     if (emailOK) {
+        $("#su-button").attr("disabled", "disabled");
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -127,17 +130,18 @@ $('#su-form').submit(function (event) {
             processData: false,
             success: function (data) {
                 console.log(data)
-
-
+                $("#su-button").removeAttr("disabled");
+                $('#modal-sign-up').modal('hide');
+                $('#modal-sign-up-done').modal('show');
             },
             error: function (xhr) {
+                $("#su-button").removeAttr("disabled");
                 if (xhr.status === 400) {
                     // Bad request
                     if (xhr.responseText) {
                         console.log(xhr.responseText)
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         for (let key in response.error) {
                             if (response.error.hasOwnProperty(key)) {
                                 showError('#' + key, response.error[key]);
@@ -148,7 +152,6 @@ $('#su-form').submit(function (event) {
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         $('#su-alert > span').text(response.error);
                         $('#su-alert').show();
                     }
@@ -175,6 +178,7 @@ $('#fp-form').submit(function (event) {
     }
 
     if (emailOK) {
+        $("#fp-button").attr("disabled", "disabled");
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -185,11 +189,12 @@ $('#fp-form').submit(function (event) {
             processData: false,
             success: function (data) {
                 console.log(data)
-                // show another modal
-
-
+                $("#fp-button").removeAttr("disabled");
+                $('#modal-pw-forget').modal('hide');
+                $('#modal-pw-reset-done').modal('show');
             },
             error: function (xhr) {
+                $("#fp-button").removeAttr("disabled");
                 if (xhr.status === 400) {
                     // Bad request
                     if (xhr.responseText) {

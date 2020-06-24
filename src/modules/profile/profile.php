@@ -705,7 +705,6 @@ include '../src/templates/navbar.php';
 
     <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
     <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-    <script src="/assets/js/utility.js"></script>
     <script src="/assets/js/core.js"></script>
     <script src="/assets/js/profile.js"></script>
     <script src="https://unpkg.com/pure-md5@latest/lib/index.js"></script>

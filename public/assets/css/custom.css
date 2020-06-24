@@ -67,17 +67,20 @@ main {
 .btn-primary.disabled, .btn-primary:disabled {
     background-color: var(--primary);
     border-color: var(--primary);
+    opacity: 50%;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
+    opacity: 50%;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.1rem var(--primary);
+    opacity: 50%;
 }
 
 .btn-outline-primary {
@@ -96,17 +99,20 @@ main {
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
     color: var(--primary);
+    opacity: 50%;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
     background-color: var(--primary);
     border-color: var(--primary);
+    opacity: 50%;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.1rem var(--primary-dark);
+    opacity: 50%;
 }
 
 .btn-danger {
@@ -128,17 +134,20 @@ main {
 .btn-danger.disabled, .btn-danger:disabled {
     background-color: var(--danger);
     border-color: var(--danger);
+    opacity: 50%;
 }
 
 .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
 .show > .btn-danger.dropdown-toggle {
     background-color: var(--danger-dark);
     border-color: var(--danger-dark);
+    opacity: 50%;
 }
 
 .btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
 .show > .btn-danger.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.1rem var(--danger-dark);
+    opacity: 50%;
 }
 
 .btn-secondary {
@@ -160,17 +169,20 @@ main {
 .btn-secondary.disabled, .btn-secondary:disabled {
     background-color: var(--secondary);
     border-color: var(--secondary);
+    opacity: 50%;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
 .show > .btn-secondary.dropdown-toggle {
     background-color: var(--secondary-dark);
     border-color: var(--secondary-dark);
+    opacity: 50%;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-secondary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.1rem var(--secondary-dark);
+    opacity: 50%;
 }
 
 .btn-profile-sm {

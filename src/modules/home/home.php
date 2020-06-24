@@ -123,7 +123,6 @@ $this_month_activities = $activity_model->getThisMonthActivities() ;
 
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-<script src="/assets/js/utility.js"></script>
 <script src="/assets/js/core.js"></script>
 
 <?php include '../src/templates/footer.php'?>
