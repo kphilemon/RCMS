@@ -10,7 +10,10 @@ if (preg_match('/^\/api\/login\/?$/i', $_SERVER['REQUEST_URI'])) {
 } elseif (preg_match('/^\/api\/register\/?$/i', $_SERVER['REQUEST_URI'])) {
     include '../src/api/register.php';
 
-} elseif (preg_match('/^\/api\/accommodation\/create\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/api\/forget\/?$/i', $_SERVER['REQUEST_URI'])) {
+    include '../src/api/forget.php';
+
+}elseif (preg_match('/^\/api\/accommodation\/create\/?$/i', $_SERVER['REQUEST_URI'])) {
     include '../src/api/accommodation-create.php';
 
 } elseif (preg_match('/^\/api\/accommodation\/update\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {

@@ -3,20 +3,24 @@
         <div class="modal-content">
             <div class="modal-body p-4">
 
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+
                 <h3 class="modal-title text-center text-primary mb-4 mt-3">Create an account</h3>
 
-                <form class="p-2" action="profile.html" id="form-sign-up">
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="su-username" placeholder="Username" required>
+                <form class="p-2" id="su-form" method="post" action="/api/register" novalidate>
+                    <div class="alert alert-warning fade show" id="su-alert" role="alert">
+                        <span></span>
+                        <button type="button" class="close"><span>&times;</span></button>
                     </div>
 
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="su-email" placeholder="Email Address" required>
-                    </div>
+                    <p class="text-center mb-4">Kindly enter your siswamail address below and we will send you an account activation
+                        link.</p>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" id="su-password" placeholder="Password" required>
+                        <input type="email" class="form-control" name="email" id="su-email" placeholder="Siswamail Address" required>
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 my-4">Sign Up</button>

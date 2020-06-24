@@ -1,6 +1,4 @@
 <?php
-include '../src/templates/header.php';
-include '../src/templates/navbar.php';
 include '../src/models/UMStudentModel.php';
 
 
@@ -103,8 +101,8 @@ if (isset($_SESSION['user_id'])) {
                 $profile = new UMStudentModel($db->getConnection());
                 $delete_acc = $profile->deleteAccountById($_SESSION['user_id'], md5($_POST['pass_delete_acc']));
                 if ($delete_acc) {
-                    //prompt to the url (localhost/logout.php)
-                    header('Location: /api/logout POST');
+                    session_destroy();
+                    header('Location: /');
                 } else {
                     $server_err = true;
                 }
@@ -145,6 +143,8 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 }
+include '../src/templates/header.php';
+include '../src/templates/navbar.php';
 
 
 ?>

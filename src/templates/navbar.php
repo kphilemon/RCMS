@@ -3,7 +3,7 @@
 // set to empty string if you do not want the link in navbar to be highlighted
 define('NAVBAR_ID_BY_TITLE', [TITLE_RCMS => 'home', TITLE_ACTIVITY => '', TITLE_MY_ACTIVITIES => 'my-activities',
         TITLE_ISSUES => 'issues', TITLE_FOOD => 'food', TITLE_ACCOMMODATION => 'accommodation', TITLE_PROFILE => 'profile',
-        TITLE_NOT_FOUND => '']
+        TITLE_NOT_FOUND => '', TITLE_ACTIVATE => '']
 );
 ?>
 
@@ -30,8 +30,8 @@ define('NAVBAR_ID_BY_TITLE', [TITLE_RCMS => 'home', TITLE_ACTIVITY => '', TITLE_
                 <?php if (isset($_SESSION['user_id'])) : ?>
                     <div class="dropdown-divider d-lg-none"></div>
                     <a class="nav-item nav-link d-lg-none" id="nav-profile" href="/profile">Manage Profile</a>
-                    <a class="nav-item nav-link d-lg-none" id="nav-support" href="#">Support</a>
-                    <a class="nav-item nav-link d-lg-none" id="nav-logout" href="">Log Out</a>
+                    <a class="nav-item nav-link d-lg-none" id="nav-support" href="mailto:support@rcms.com?subject=RCMS Support">Support</a>
+                    <a class="nav-item nav-link d-lg-none" id="nav-logout" href="/api/logout">Log Out</a>
                 <?php endif; ?>
             </div>
 
@@ -43,8 +43,8 @@ define('NAVBAR_ID_BY_TITLE', [TITLE_RCMS => 'home', TITLE_ACTIVITY => '', TITLE_
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" id="nav-menu-profile" href="/profile">Manage Profile</a>
-                        <a class="dropdown-item" id="nav-menu-support" href="#">Support</a>
-                        <a class="dropdown-item" id="nav-menu-logout" href="">Log Out</a>
+                        <a class="dropdown-item" id="nav-menu-support" href="mailto:support@rcms.com?subject=RCMS Support">Support</a>
+                        <a class="dropdown-item" id="nav-menu-logout" href="/api/logout">Log Out</a>
                     </div>
                 </div>
             <?php else : ?>

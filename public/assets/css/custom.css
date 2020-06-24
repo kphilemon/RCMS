@@ -330,6 +330,13 @@ main {
     cursor: pointer;
 }
 
+.form-activate {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
 #sidecard {
     animation: fade_in_show 0.5s;
 }

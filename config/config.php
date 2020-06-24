@@ -13,6 +13,7 @@ define('TITLE_FOOD', 'Food');
 define('TITLE_ACCOMMODATION', 'Accommodation');
 define('TITLE_PROFILE', 'User Profile');
 define('TITLE_NOT_FOUND', 'Not found');
+define('TITLE_ACTIVATE', 'Activate account');
 
 define('CAROUSEL_IMAGES_PATH', realpath($_SERVER['DOCUMENT_ROOT'] . '/assets/img/carousel/'));
 

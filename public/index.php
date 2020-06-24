@@ -45,6 +45,10 @@ if (preg_match('/^(\/?|\/(home|activities)\/?)$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_PROFILE;
     include '../src/modules/profile/profile.php';
 
+} elseif (preg_match('/^\/activate\/[a-f0-9]{32}\/?$/i', $_SERVER['REQUEST_URI'])) {
+    $GLOBALS['title'] = TITLE_ACTIVATE;
+    include '../src/modules/profile/activate.php';
+
 } elseif (preg_match('/^\/api(\/[^\s\/]+)+\/?$/i', $_SERVER['REQUEST_URI'])) {
     include '../src/api/handler.php';
 

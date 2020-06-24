@@ -268,16 +268,3 @@ $('#passDeleteAccForm').submit(function (event) {
     event.stopPropagation();
     return false;
 })
-
-// showError sets error message on the general sibling of the selector that is passed in and show error
-function showError(elem, msg = '') {
-    if (msg !== '') {
-        $(elem + ' ~ .invalid-feedback').html(msg);
-    }
-
-    $(elem).addClass('is-invalid');
-}
-
-function hideError(elem) {
-    $(elem).removeClass('is-invalid');
-}

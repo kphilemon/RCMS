@@ -37,7 +37,7 @@ class UserModel
         // select * from user where ...
         try {
             $stmt = $this->connection->prepare('SELECT * FROM student WHERE email=?');
-            $stmt->execute(["$email"]);
+            $stmt->execute([$email]);
             $data = $stmt->fetch();
 
             if (!$data) {
@@ -57,7 +57,7 @@ class UserModel
         // select * from user where ...
         try {
             $stmt = $this->connection->prepare('SELECT * FROM um_database WHERE email=?');
-            $stmt->execute(["$email"]);
+            $stmt->execute([$email]);
             $data = $stmt->fetch();
 
             if (!$data) {
@@ -79,20 +79,15 @@ class UserModel
             $stmt = $this->connection->prepare('
             INSERT INTO student (email, name, matrix_no, college_id, faculty, course, hash)
             VALUES (:email, :name, :matrix_no, :college_id, :faculty, :course, :hash)');
-            $insert = $stmt->execute([
-                ":email" => "$email",
-                ":name" => "$name",
+            return $stmt->execute([
+                ":email" => $email,
+                ":name" => $name,
                 ":matrix_no" => $matrix_no,
                 ":college_id" => $college_id,
-                ":faculty" => "$faculty",
-                ":course" => "$course",
-                ":hash" => "$hash"
+                ":faculty" => $faculty,
+                ":course" => $course,
+                ":hash" => $hash
             ]);
-
-            if ($insert) {
-                return false;
-            }
-            return true;
 
         } catch (PDOException $exception) {
             error_log('UserModel: insertByEmailReg: ' . $exception->getMessage() . 'email: ' . $email);
@@ -112,8 +107,8 @@ class UserModel
             SET hash=:hash, activated=:activated
             WHERE email=:email');
             return $stmt->execute([
-                ":email" => "$email",
-                ":hash" => "$hash",
+                ":email" => $email,
+                ":hash" => $hash,
                 ":activated" => 0
             ]);
 
@@ -123,7 +118,7 @@ class UserModel
         }
     }
 
-    public function updatePassword(string $email, string $Password): bool
+    public function updatePassword(string $email, string $password): bool
     {
         // use insert into on duplicate here because user might lose the verification link
         // normal insert will not allow if key exist. So, update if key exits to "refresh" the hash
@@ -134,9 +129,9 @@ class UserModel
             SET password=:password, activated=:activated
             WHERE email=:email');
             return $stmt->execute([
-                ":email" => "$email",
+                ":email" => $email,
                 ":activated" => 1,
-                ":password" => "$Password",
+                ":password" => $password,
             ]);
 
         } catch (PDOException $exception) {
