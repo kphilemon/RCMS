@@ -1,4 +1,6 @@
 <?php
+include '../src/utilities/email.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     // 405 - Method not allowed: Only POST is allowed
@@ -58,20 +60,12 @@ if (!$success) {
     exit();
 }
 
-//register successful then send email
-$to = $siswamail; // Send email to our user
-$subject = 'Forget Password | Request for changing password'; // Give the email a subject
-$message = '
-                    
-                        Hi! ' . $data['name'] . '. You can reset your password by pressing the url below.
-                        
-                        Please click this link to reset your password:
-                        http://localhost/activate/{' . $hash . '
-                        
-                        }'; // Our message above including the link
-
-$headers = 'From:noreply@rcms.com' . "\r\n"; // Set from headers
-mail($to, $subject, $message, $headers);
+$success = sendForgetPasswordEmail($siswamail, getHostAddress() . '/activate/' . $hash);
+if (!$success){
+    http_response_code(500);
+    echo json_encode(['error' => 'There\'s some issue with the server. Please try again.']);
+    exit();
+}
 
 
 http_response_code(200);

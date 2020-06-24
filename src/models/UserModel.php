@@ -16,7 +16,7 @@ class UserModel
         // select * from student where hash = :hash
         try {
             $stmt = $this->connection->prepare('SELECT * FROM student WHERE hash =?');
-            $stmt->execute(["$hash"]);
+            $stmt->execute([$hash]);
             $data = $stmt->fetch();
 
             if (!$data) {
@@ -104,16 +104,15 @@ class UserModel
 
             $stmt = $this->connection->prepare('
             UPDATE student
-            SET hash=:hash, activated=:activated
+            SET hash=:hash, activated = 0
             WHERE email=:email');
             return $stmt->execute([
                 ":email" => $email,
-                ":hash" => $hash,
-                ":activated" => 0
+                ":hash" => $hash
             ]);
 
         } catch (PDOException $exception) {
-            error_log('UserModel: updatePassword: ' . $exception->getMessage() . 'email: ' . $email);
+            error_log('UserModel: updateHash: ' . $exception->getMessage() . 'email: ' . $email);
             throw $exception;
         }
     }

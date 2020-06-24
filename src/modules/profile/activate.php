@@ -37,7 +37,7 @@ if (!$server_err && !$activated && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $pattern = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
     if (!empty($_POST['password']) && preg_match($pattern, $_POST['password'])) {
         try {
-            $success = $student_model->updatePassword($data['email'], $_POST['password']);
+            $success = $student_model->updatePassword($data['email'], md5($_POST['password']));
         } catch (PDOException $exception) {
             $server_err = true;
         }
@@ -126,7 +126,7 @@ if (!$server_err && !$activated && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="/assets/js/utility.js"></script>
 <script src="/assets/js/core.js"></script>
 <script src="/assets/js/activate.js"></script>
-
+<script src="https://unpkg.com/pure-md5@latest/lib/index.js"></script>
 
 <?php include '../src/templates/footer.php' ?>
 

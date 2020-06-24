@@ -41,7 +41,7 @@ class UserActivityModel
             ]);
 
         } catch (PDOException $exception) {
-            error_log('UserActivityModel: register: ' . $exception->getMessage());
+            error_log('UserActivityModel: registerActivity: ' . $exception->getMessage());
             throw $exception;
         }
 
@@ -55,7 +55,7 @@ class UserActivityModel
 
 
         } catch (PDOException $exception) {
-            error_log('UserActivityModel: unregister: ' . $exception->getMessage() . 'id: ');
+            error_log('UserActivityModel: unregisterActivity: ' . $exception->getMessage() . 'id: ');
             throw $exception;
         }
 
@@ -74,7 +74,7 @@ class UserActivityModel
             return $data;
 
         } catch (PDOException $exception) {
-            error_log('ActivityModel: getAllActivities: ' . $exception->getMessage());
+            error_log('ActivityModel: getActivityExceptId: ' . $exception->getMessage());
             throw $exception;
         }
     }
@@ -94,7 +94,7 @@ class UserActivityModel
             return $data;
 
         } catch (PDOException $exception) {
-            error_log('UserActivityModel: getById: ' . $exception->getMessage() . 'id: ' . $id);
+            error_log('UserActivityModel: getActivityById: ' . $exception->getMessage() . 'id: ' . $id);
             throw $exception;
         }
     }
@@ -103,8 +103,7 @@ class UserActivityModel
     {
 
         try {
-            $stmt = $this->connection->prepare('SELECT * FROM user_activity WHERE id = ? INNER JOIN user_activty.activity_id 
-            ON activty.id');
+            $stmt = $this->connection->prepare('SELECT * FROM user_activity INNER JOIN user_activty.activity_id ON activty.id  WHERE id = ?');
             $stmt->execute([$id]);
             $data = $stmt->fetchAll();
 
@@ -114,7 +113,7 @@ class UserActivityModel
             return $data;
 
         } catch (PDOException $exception) {
-            error_log('UserActivityModel: getById: ' . $exception->getMessage() . 'id: ' . $id);
+            error_log('UserActivityModel: getUserAllActivity: ' . $exception->getMessage() . 'id: ' . $id);
             throw $exception;
         }
     }

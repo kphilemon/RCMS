@@ -230,6 +230,7 @@ if (isset($_SESSION['user_id'])) {
             },
             navLinks: true, // can click day/week names to navigate views
             editable: false,
+            selectable: true,
             eventLimit: true, // allow "more" link when too many events
             events: [
                 <?php

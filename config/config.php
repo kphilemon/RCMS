@@ -1,9 +1,11 @@
 <?php
 
+// for development environment
 //ini_set('log_errors','1');
 //ini_set('error_reporting', E_ALL );
 //ini_set('display_errors', '0');
 //ini_set('display_startup_errors', '1');
+
 
 define('TITLE_RCMS', 'RCMS');
 define('TITLE_ACTIVITY', 'Activities');
@@ -38,3 +40,8 @@ if (!is_dir(ACCOMMODATION_UPLOAD_PATH)) {
 if (!is_dir(ISSUES_UPLOAD_PATH)) {
     mkdir(ISSUES_UPLOAD_PATH, 0755, true);
 }
+
+define('SMTP_SERVER_HOST', 'smtp.gmail.com');
+define('SMTP_SERVER_PORT', 587);
+define('EMAIL_ADDRESS', 'kphilemon0529@gmail.com');
+define('EMAIL_PASSWORD', 'wmghwmsfjmrwaewt');

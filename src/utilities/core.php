@@ -8,3 +8,8 @@ function redirect_if_profile_incomplete()
         exit();
     }
 }
+
+function getHostAddress(): string
+{
+    return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+}

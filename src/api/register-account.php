@@ -1,4 +1,5 @@
 <?php
+include '../src/utilities/email.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -43,7 +44,7 @@ if (!empty($data)) {
     } else {
         //activated, ask user sign in instead
         http_response_code(412);
-        echo json_encode(['error' => 'Your has registered and activated your account. Please sign in.']);
+        echo json_encode(['error' => 'Your siswamail has been registered and activated. Please sign in.']);
     }
     exit();
 }
@@ -63,7 +64,7 @@ try {
 if (empty($UMStudentData)) {
     //No, not a student
     http_response_code(412);
-    echo json_encode(['error' => 'Are you a student? We couldn\'t find your student record. Please make sure your siswamail is correct.']);
+    echo json_encode(['error' => 'We couldn\'t find your student record. Please make sure your siswamail is correct.']);
     exit();
 }
 
@@ -89,20 +90,12 @@ if (!$success) {
 }
 
 //register successful then send email
-$to = $siswamail; // Send email to our user
-$subject = 'Signup | Verification for RCMS account'; // Give the email a subject
-$message = '
-                
-                    Hi! ' . $siswamail . '. Thanks for signing up!
-                    Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
-                    
-                    Please click this link to activate your account:
-                    http://localhost/activate/{' . $hash . '
-                    
-                    }'; // Our message above including the link
-
-$headers = 'From:noreply@rcms.com' . "\r\n"; // Set from headers
-mail($to, $subject, $message, $headers);
+$success = sendAccountActivationEmail($siswamail, getHostAddress() . '/activate/' . $hash);
+if (!$success){
+    http_response_code(500);
+    echo json_encode(['error' => 'There\'s some issue with the server. Please try again.']);
+    exit();
+}
 
 
 http_response_code(200);
