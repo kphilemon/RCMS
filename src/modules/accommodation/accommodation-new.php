@@ -100,10 +100,10 @@ include '../src/templates/navbar.php';
                         id="submit">
                     Submit
                 </button>
-                <button type="button" class="btn btn-outline-primary ml-3 my-2 px-4 float-right"
+                <a href="/accommodation" type="button" class="btn btn-outline-primary ml-3 my-2 px-4 float-right"
                         id="cancel">
                     Cancel
-                </button>
+                </a>
 
             </form>
         </div>

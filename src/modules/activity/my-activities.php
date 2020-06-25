@@ -21,11 +21,18 @@ if (isset($_SESSION['user_id'])) {
 
     if (!empty($all_activities)) {
         $this_week = [];
+        $past = [];
         $next_monday = date('Y-m-d', strtotime('next Monday'));
+        $today = date('Y-m-d');
 
         foreach ($all_activities as $key => $value) {
             if ($value['activity_date'] < $next_monday) {
                 $this_week[$key] = $value;
+                unset($all_activities[$key]);
+            }
+
+            if ($value['activity_date'] < $today) {
+                $today[$key] = $value;
                 unset($all_activities[$key]);
             }
         }
@@ -69,6 +76,27 @@ if (isset($_SESSION['user_id'])) {
                     <hr class="mt-5 mb-4">
                     <h5>Other registered activities</h5>
                     <?php foreach ($all_activities as $activity) : ?>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card raised-card flex-row mt-4">
+                                    <img class="card-img-left" src="<?= $activity['img'] ?>">
+                                    <div class="card-body details-sm">
+                                        <h6 class="card-title text-truncate text-primary-purple "><?= date("d F Y ", strtotime($activity['activity_date'])) ?></h6>
+                                        <h5 class="card-subtitle text-truncate text-primary"><?= $activity['name'] ?></h5>
+                                    </div>
+                                    <a href="<?= '/activities/' . $activity['activity_id'] ?>"
+                                       class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+                <?php if (!empty($past)): ?>
+
+                    <hr class="mt-5 mb-4">
+                    <h5>Past activities</h5>
+                    <?php foreach ($past as $activity) : ?>
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="card raised-card flex-row mt-4">

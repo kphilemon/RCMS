@@ -58,6 +58,7 @@ if ($inserted_id === '') {
     exit();
 }
 
+$_SESSION['added-accommodation'] = 1;
 // 200 - Success
 http_response_code(200);
 echo json_encode(['id' => $inserted_id]);

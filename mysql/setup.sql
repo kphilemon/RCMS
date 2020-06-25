@@ -68,7 +68,10 @@ CREATE TABLE activity
     activity_date DATETIME      NOT NULL
 );
 INSERT INTO activity (name, img, venue, description, activity_date)
-VALUES ("Run for Beer 2020", "/assets/img/activities/activity-0000.jpg", "Sports Field",
+VALUES ("Seeing The Racial Water", "/assets/img/activities/activity-0004.jpg", "Hall 3",
+        "Our original half - day offering with Dr. DiAngelo is a 3.5 hour workshop that offers the bulk of her research, systemic analysis of White Supremacy, and work around Whiteness and White Fragility. Dr. DiAngelo takes participants through topics including white socialization, systemic racism and the specific ways racism manifests for white progressives.",
+        "2020-06-01 12:30:00"),
+       ("Run for Beer 2020", "/assets/img/activities/activity-0000.jpg", "Sports Field",
         "We are the Michigan Brewery Running Series and we run for beer! Join us for Global Running Month!
         Try to hit 100 miles in June and earn some awesome prizes along the way! Contact us at catherine@breweryrunningseries.com , Cheers to beers! We’ll see you Running in the Cloud!",
         "2020-06-27 08:30:00"),

@@ -64,7 +64,7 @@ class UserActivityModel
     public function getActivityExceptId(int $id): array
     {
         try {
-            $stmt = $this->connection->prepare('SELECT * FROM activity WHERE NOT id= ? ORDER BY `activity_date` ASC');
+            $stmt = $this->connection->prepare('SELECT * FROM activity WHERE NOT id= ? AND activity_date>=CURDATE() ORDER BY `activity_date` ASC');
             $stmt->execute([$id]);
             $data = $stmt->fetchAll();
 

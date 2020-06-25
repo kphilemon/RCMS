@@ -2,13 +2,13 @@ $("#college, #check-in, #check-out, #supporting-docs, #purpose").attr("disabled"
 
 const MAX_LENGTH = 5000;
 let college = $('#college'), checkIn = $('#check-in'), checkOut = $('#check-out'),
-    supportingDocs = $('#supporting-docs'), purpose = $('#purpose'), alert = $('#error-alert');
+    supportingDocs = $('#supporting-docs'), purpose = $('#purpose'), alertError = $('#error-alert');
 
-alert.hide();
+alertError.hide();
 $('#cancel').hide();
 
 $('#error-alert .close').click(function () {
-    alert.hide();
+    alertError.hide();
 });
 
 college.change(function () {
@@ -63,7 +63,7 @@ $('#details').submit(function (event) {
     event.preventDefault();
     event.stopPropagation();
 
-    if(college.prop('disabled') || checkIn.prop('disabled') || checkOut.prop('disabled') || purpose.prop('disabled') || supportingDocs.prop('disabled')){
+    if (college.prop('disabled') || checkIn.prop('disabled') || checkOut.prop('disabled') || purpose.prop('disabled') || supportingDocs.prop('disabled')) {
         $("#college, #check-in, #check-out, #supporting-docs, #purpose").removeAttr('disabled');
         $('#submit').text('Save changes');
         $('#cancel').show();
@@ -157,12 +157,12 @@ $('#details').submit(function (event) {
                 } else if (xhr.status === 401) {
                     // User not logged in
                     $('#error-alert > span').text('Please sign in to submit your application.');
-                    alert.show();
+                    alertError.show();
 
                 } else {
                     // Server errors
                     $('#error-alert > span').text('Opps, your submission has failed due to some server issues. Please try again later.');
-                    alert.show();
+                    alertError.show();
                 }
             },
         });

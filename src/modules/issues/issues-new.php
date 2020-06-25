@@ -140,10 +140,10 @@ include '../src/templates/navbar.php';
                 <button type="submit" class="btn btn-primary ml-3 my-2 px-4 float-right" id="submit">
                     Submit
                 </button>
-                <button type="button" class="btn btn-outline-primary ml-3 my-2 px-4 float-right"
+                <a href="/issues" type="button" class="btn btn-outline-primary ml-3 my-2 px-4 float-right"
                         id="cancel">
                     Cancel
-                </button>
+                </a>
             </form>
         </div>
     <?php else : include '../src/templates/acc_req.php'; endif; ?>

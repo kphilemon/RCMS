@@ -303,9 +303,10 @@ include '../src/templates/navbar.php';
                                     <div class="col-md-3 mb-3">
                                         <label for="inputTel">Telephone No.</label>
                                         <input id="inputTel" name="telephone" type="text" class="form-control"
-                                               placeholder="Tel No"
+                                               placeholder="0123456789"
                                                value="<?= ($data['phone']) ? $data['phone'] : "" ?>" required>
                                         <div class="invalid-feedback"></div>
+                                        <small class="form-text text-muted">Must be in the form of 0123456789</small>
                                     </div>
 
                                     <!--sex Input-->

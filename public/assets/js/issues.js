@@ -32,7 +32,7 @@ let table = $('#table').DataTable({
 
             if (row[5] === '0') {
                 return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a> | <a href="/issues/' + row[1] + '">Edit</a> </span>';
-            } else {
+            } else if (row[5] === '1') {
                 return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a></span>'
             }
         }

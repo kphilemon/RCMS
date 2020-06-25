@@ -67,6 +67,7 @@ if (!$success) {
     exit();
 }
 
+$_SESSION['updated-issue'] = 1;
 // 200 - Success
 http_response_code(200);
 

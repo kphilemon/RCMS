@@ -68,6 +68,7 @@ if (!$success) {
     exit();
 }
 
+$_SESSION['updated-accommodation'] = 1;
 // 200 - Success
 http_response_code(200);
 

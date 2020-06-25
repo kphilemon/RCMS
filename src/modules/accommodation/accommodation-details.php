@@ -43,6 +43,26 @@ if (isset($_SESSION['user_id'])) {
                     <button type="button" class="close"><span>&times;</span></button>
                 </div>
 
+                <?php if (isset($_SESSION['updated-accommodation'])): ?>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Application updated successfully.
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <?php unset($_SESSION['updated-accommodation']); ?>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['added-accommodation'])): ?>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Application submitted. You can still edit the application before it is being approved.
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <?php unset($_SESSION['added-accommodation']); ?>
+                <?php endif; ?>
+
                 <div class="card p-4 mb-4">
                     <div class="row">
                         <div class="col-lg-6">
@@ -141,7 +161,7 @@ if (isset($_SESSION['user_id'])) {
                                     <label for="supporting-docs">Supporting document (optional)</label>
                                     <div class="custom-file ">
                                         <label class="custom-file-label"
-                                               for="supporting-docs"><?= (empty($record['supporting_docs'])) ? 'Select file' : substr($record['supporting_docs'], 11)?></label>
+                                               for="supporting-docs"><?= (empty($record['supporting_docs'])) ? 'Select file' : substr($record['supporting_docs'], 11) ?></label>
                                         <input type="file" class="custom-file-input" id="supporting-docs"
                                                name="supporting-docs" accept="application/pdf">
                                         <div class="invalid-feedback"></div>
@@ -161,6 +181,11 @@ if (isset($_SESSION['user_id'])) {
                                 </div>
                             </div>
                         </div>
+
+                        <button type="button" class="btn btn-outline-primary my-2 px-4 "
+                                id="submit">
+                            Edit
+                        </button>
 
                         <button type="submit" class="btn btn-primary ml-3 my-2 px-4 float-right"
                                 id="submit">

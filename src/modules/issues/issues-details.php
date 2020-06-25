@@ -45,6 +45,26 @@ if (isset($_SESSION['user_id'])) {
                         </button>
                     </div>
 
+                    <?php if (isset($_SESSION['updated-issue'])): ?>
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            Issue report updated successfully.
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <?php unset($_SESSION['updated-issue']); ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['added-issue'])): ?>
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            Issue submitted. You can still edit the issue before it is being processed.
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <?php unset($_SESSION['added-issue']); ?>
+                    <?php endif; ?>
+
                     <div class="card p-4 mb-4">
                         <div class="row">
                             <div class="col-lg-6">
