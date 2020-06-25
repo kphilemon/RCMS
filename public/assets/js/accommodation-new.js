@@ -96,14 +96,14 @@ $('#details').submit(function (event) {
         checkOutOK = false;
     }
 
-    if (supportingDocsFile && !supportingDocsFile.name.endsWith('.pdf')) {
-        showError('#supporting-docs', 'Only files with .pdf extension is acceptable.');
-        docsOK = false;
-    }
-
     if (supportingDocsFile && (supportingDocsFile.size / 1024 / 1024) > 1) {
         showError('#supporting-docs', 'File size exceeded limit of 1MB.');
         docsOK = false
+    }
+
+    if (supportingDocsFile && !supportingDocsFile.name.match(/\.(pdf)$/i)) {
+        showError('#supporting-docs', 'Only files with .pdf extension is acceptable.');
+        docsOK = false;
     }
 
     if (purposeText === '') {
@@ -159,8 +159,6 @@ $('#details').submit(function (event) {
     }
 
 })
-
-
 
 function pad(num, size) {
     return ('000' + num).substr(-size);

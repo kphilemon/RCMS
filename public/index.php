@@ -21,9 +21,13 @@ if (preg_match('/^(\/?|\/(home|activities)\/?)$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ISSUES;
     include '../src/modules/issues/issues.php';
 
-} elseif (preg_match('/^\/issues\/(\d+|new)\/?$/i', $_SERVER['REQUEST_URI'])) {
+} elseif (preg_match('/^\/issues\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_ISSUES;
     include '../src/modules/issues/issues-details.php';
+
+}  elseif (preg_match('/^\/issues\/new\/?$/i', $_SERVER['REQUEST_URI'])) {
+    $GLOBALS['title'] = TITLE_ISSUES;
+    include '../src/modules/issues/issues-new.php';
 
 } elseif (preg_match('/^\/food(\/\d{4}-\d{2}-\d{2})?\/?$/i', $_SERVER['REQUEST_URI'])) {
     $GLOBALS['title'] = TITLE_FOOD;

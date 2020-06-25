@@ -1,11 +1,5 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    // 405 - Method not allowed: Only POST is allowed
-    http_response_code(405);
-    exit();
-}
-
 if (!isset($_SESSION['user_id'])) {
     // 401 - Unauthorised: client not logged in
     http_response_code(401);

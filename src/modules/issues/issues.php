@@ -2,18 +2,27 @@
 redirect_if_profile_incomplete();
 include '../src/templates/header.php';
 include '../src/templates/navbar.php';
+include '../src/models/IssueModel.php';
 
 if (isset($_SESSION['user_id'])) {
-    // user is logged in, load issues from db
-}
 
-// set to true if any of the db actions failed
-$server_err = false;
+    $db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
+    $server_err = false;
+
+    try {
+        $model = new IssueModel($db->getConnection());
+        $records = $model->getReportsByUserId($_SESSION['user_id']);
+    } catch (PDOException $exception) {
+        $server_err = true;
+    }
+
+    $db->closeConnection();
+}
 ?>
 
 <main class="container">
     <?php if (isset($_SESSION['user_id'])) : ?>
-        <?php if ($server_err) : include '../src/templates/server_err.php'; else: ?>
+        <?php if (!$server_err) : ?>
             <div class="card p-4 mb-4">
                 <h5 class="text-primary m-0">Report and track issues at KK<?= $_SESSION['user_college_id'] ?></h5>
                 <p class="text-secondary m-0">Add, edit or delete issues found at your residential college.</p>
@@ -21,98 +30,37 @@ $server_err = false;
 
             <div class="card p-4">
                 <div class="table-responsive">
-                    <button type="button" class="btn btn-primary" id="submit" style="float: right">Submit New</button>
+                    <a href="issues/new" type="button" class="btn btn-primary float-none d-block float-md-right px-4 mb-4 mb-md-0">Report New</a>
 
-                    <table class="table header-border table-responsive-sm" id="table">
+                    <table class="table header-border table-hover w-100 py-3 table-responsive-sm" id="table">
                         <thead>
                         <tr>
                             <th>No.</th>
                             <th>Report ID</th>
-                            <th>Problem Category</th>
                             <th>Problem Type</th>
-                            <th>Status</th>
+                            <th>Problem Location</th>
                             <th>Report Date-Time</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tbody id="myTable">
-                        <tr>
-                            <td></td>
-                            <td>2005091127</td>
-                            <td>Toilet</td>
-                            <td>Piping</td>
-                            <td><span class="badge badge-pending">Pending</span></td>
-                            <td>2020-05-09 11:27</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>2005081456</td>
-                            <td>Study Area</td>
-                            <td>Internet Connection</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2020-05-08 14:56</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>2003010922</td>
-                            <td>Cafe</td>
-                            <td>Cleanliness</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2020-03-01 09:22</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>1912231732</td>
-                            <td>Volleyball Court</td>
-                            <td>Facility</td>
-                            <td><span class="badge badge-failure">Incompleted</span></td>
-                            <td>2019-12-23 17:32</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>1912221127</td>
-                            <td>Toilet</td>
-                            <td>Piping</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2019-12-22 11:27</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>1910301456</td>
-                            <td>Study Area</td>
-                            <td>Internet Connection</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2019-10-30 14:56</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>1910030922</td>
-                            <td>Cafe</td>
-                            <td>Cleanliness</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2019-10-03 09:22</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>1909231732</td>
-                            <td>Volleyball Court</td>
-                            <td>Facility</td>
-                            <td><span class="badge badge-success">Completed</span></td>
-                            <td>2019-09-23 17:32</td>
-                            <td></td>
-                        </tr>
+                        <tbody id="myTable" onload="editable()">
+                        <?php foreach ($records as $record): ?>
+                            <tr>
+                                <td></td>
+                                <td><?= sprintf( '%04d', $record['id'] ) ?></td>
+                                <td><?= $record['type'] ?></td>
+                                <td><?= $record['location'] ?></td>
+                                <td><?= $record['created_at'] ?></td>
+                                <td><?= $record['status'] ?></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-        <?php endif; ?>
+        <?php else : include '../src/templates/server_err.php'; endif; ?>
     <?php else : include '../src/templates/acc_req.php'; endif; ?>
 </main>
 
@@ -120,7 +68,7 @@ $server_err = false;
 
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
-<script src="/assets/js/utility.js"></script>
+<script src="/assets/js/vendor/datatables.js"></script>
 <script src="/assets/js/core.js"></script>
 <script src="/assets/js/issues.js"></script>
 

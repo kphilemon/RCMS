@@ -2,7 +2,6 @@
 redirect_if_profile_incomplete();
 include '../src/templates/header.php';
 include '../src/templates/navbar.php';
-include '../src/models/AccommodationModel.php';
 ?>
 
 <main class="container">
@@ -114,7 +113,7 @@ include '../src/models/AccommodationModel.php';
 <script src="/assets/js/vendor/jquery-3.5.1.js"></script>
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
 <script src="/assets/js/core.js"></script>
-<script src="/assets/js/accommodation-form.js"></script>
+<script src="/assets/js/accommodation-new.js"></script>
 <script>$('.custom-file-label').attr('text', 'Browse');</script>
 
 <?php include '../src/templates/footer.php' ?>

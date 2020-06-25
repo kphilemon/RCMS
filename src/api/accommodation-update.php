@@ -46,14 +46,13 @@ $college = intval($_POST['college']);
 $check_in_date = date_create_from_format('Y-m-d', $_POST['check-in'])->format('Y-m-d');
 $check_out_date = date_create_from_format('Y-m-d', $_POST['check-out'])->format('Y-m-d');
 $purpose = trim($_POST['purpose']);
-$delete_previous = intval($_POST['del-prev'] ?? 0);
 $success = false;
 
 include '../src/models/AccommodationModel.php';
 $db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
 try {
     $model = new AccommodationModel($db->getConnection());
-    $success = $model->update($accommodation_id, $_SESSION['user_id'], $check_in_date, $check_out_date, $college, $purpose, ($uploaded_name === '') ? null : $uploaded_name, $delete_previous === 1);
+    $success = $model->update($accommodation_id, $_SESSION['user_id'], $check_in_date, $check_out_date, $college, $purpose, ($uploaded_name === '') ? null : $uploaded_name);
 
 } catch (PDOException $exception) {
 // 500 - Server error: failed to connect to database
@@ -123,8 +122,7 @@ function validate_request()
 
 function process_file_upload(): string
 {
-    $file_name = substr(preg_replace('/[^A-Za-z0-9 \.\-_]/', '', $_FILES['supporting-docs']['name']), 0, -4)
-        . '_' . time() . '.pdf';
+    $file_name = time() . '_' . preg_replace('/[^A-Za-z0-9 \.\-_]/', '', $_FILES['supporting-docs']['name']);
 
     $dest = ACCOMMODATION_UPLOAD_PATH . $file_name;
     if (!move_uploaded_file($_FILES['supporting-docs']['tmp_name'], $dest)) {

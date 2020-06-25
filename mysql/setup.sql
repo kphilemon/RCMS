@@ -230,4 +230,7 @@ CREATE TABLE accommodation
 
 INSERT INTO accommodation (user_id, check_in_date, check_out_date, college_id, purpose, supporting_docs)
 VALUES (1, "2020-07-10", "2020-07-31", 8, "Internship", NULL);
-
+INSERT INTO accommodation (user_id, check_in_date, check_out_date, college_id, purpose, supporting_docs, status)
+VALUES (1, "2020-07-10", "2020-07-31", 12, "Play play", NULL, 2);
+INSERT INTO accommodation (user_id, check_in_date, check_out_date, college_id, purpose, supporting_docs, status)
+VALUES (1, "2020-07-10", "2020-07-31", 12, "Study", NULL, 1);

@@ -91,37 +91,48 @@ class AccommodationModel
         }
     }
 
-    public function update(int $id, int $userId, string $checkInDate, string $checkOutDate, int $collegeId, string $purpose, ?string $supportingDocs, bool $deletePrevious): bool
+    public function update(int $id, int $userId, string $checkInDate, string $checkOutDate, int $collegeId, string $purpose, ?string $supportingDocs): bool
     {
         try {
 
             // delete uploaded file is user specifies or user uploaded new file
-            if ($deletePrevious || $supportingDocs != null){
+            if ($supportingDocs != null) {
                 $data = $this->getDocsNameByIdUserId($id, $userId);
-                if (empty($data)){
+                if (empty($data)) {
                     // empty means record does not exist
                     return false;
                 }
 
                 // delete uploaded file
-                if (!empty($data['supporting_docs']) && file_exists(ACCOMMODATION_UPLOAD_PATH.$data['supporting_docs'])){
-                    unlink(ACCOMMODATION_UPLOAD_PATH.$data['supporting_docs']);
+                if (!empty($data['supporting_docs']) && file_exists(ACCOMMODATION_UPLOAD_PATH . $data['supporting_docs'])) {
+                    unlink(ACCOMMODATION_UPLOAD_PATH . $data['supporting_docs']);
                 }
-            }
-
-            $sql = 'UPDATE accommodation SET check_in_date = :check_in_date, check_out_date = :check_out_date, college_id = :college_id, purpose = :purpose, supporting_docs = :supporting_docs 
+                $sql = 'UPDATE accommodation SET check_in_date = :check_in_date, check_out_date = :check_out_date, college_id = :college_id, purpose = :purpose, supporting_docs = :supporting_docs 
                     WHERE id = :id AND user_id = :user_id AND status = :status';
-            $stmt = $this->connection->prepare($sql);
-            $success = $stmt->execute([
-                ':id' => $id,
-                ':user_id' => $userId,
-                ':check_in_date' => $checkInDate,
-                ':check_out_date' => $checkOutDate,
-                ':college_id' => $collegeId,
-                ':purpose' => $purpose,
-                ':supporting_docs' => $supportingDocs,
-                ':status' => STATUS_SUBMITTED,
-            ]);
+                $stmt = $this->connection->prepare($sql);
+                $success = $stmt->execute([
+                    ':id' => $id,
+                    ':user_id' => $userId,
+                    ':check_in_date' => $checkInDate,
+                    ':check_out_date' => $checkOutDate,
+                    ':college_id' => $collegeId,
+                    ':purpose' => $purpose,
+                    ':supporting_docs' => $supportingDocs,
+                    ':status' => STATUS_SUBMITTED,
+                ]);
+            } else {
+                $sql = 'UPDATE accommodation SET check_in_date = :check_in_date, check_out_date = :check_out_date, college_id = :college_id, purpose = :purpose WHERE id = :id AND user_id = :user_id AND status = :status';
+                $stmt = $this->connection->prepare($sql);
+                $success = $stmt->execute([
+                    ':id' => $id,
+                    ':user_id' => $userId,
+                    ':check_in_date' => $checkInDate,
+                    ':check_out_date' => $checkOutDate,
+                    ':college_id' => $collegeId,
+                    ':purpose' => $purpose,
+                    ':status' => STATUS_SUBMITTED,
+                ]);
+            }
 
             if ($success && $stmt->rowCount() != 0) {
                 return true;
@@ -139,14 +150,14 @@ class AccommodationModel
     {
         try {
             $data = $this->getDocsNameByIdUserId($id, $userId);
-            if (empty($data)){
+            if (empty($data)) {
                 // empty means record does not exist
                 return false;
             }
 
             // delete uploaded file
-            if (!empty($data['supporting_docs']) && file_exists(ACCOMMODATION_UPLOAD_PATH.$data['supporting_docs'])){
-                unlink(ACCOMMODATION_UPLOAD_PATH.$data['supporting_docs']);
+            if (!empty($data['supporting_docs']) && file_exists(ACCOMMODATION_UPLOAD_PATH . $data['supporting_docs'])) {
+                unlink(ACCOMMODATION_UPLOAD_PATH . $data['supporting_docs']);
             }
 
             $stmt = $this->connection->prepare('DELETE FROM accommodation WHERE id = ? AND user_id = ?');

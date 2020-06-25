@@ -28,8 +28,13 @@ let table = $('#table').DataTable({
         }
     }, {
         "targets": 6,
-        "render": function () {
+        "render": function (data, type, row) {
 
+            if (row[5] === '0') {
+                return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a> | <a href="/accommodation/' + row[1] + '">Edit</a> </span>';
+            } else {
+                return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a></span>'
+            }
         }
     }],
     "order": [[1, 'asc']],
@@ -48,3 +53,25 @@ table.on('order.dt search.dt', function () {
         cell.innerHTML = i + 1;
     });
 }).draw();
+
+$('.delete-record').click(function (event) {
+    let id = $(this).data('id');
+    $.ajax({
+        url: '/api/accommodation/delete/' + id,
+        success: function (data) {
+            console.log(data);
+            let indexes = table
+                .rows()
+                .indexes()
+                .filter(function (value, index) {
+                    return id === table.row(value).data()[1];
+                });
+
+            table.rows(indexes).remove().draw();
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+        }
+    });
+    event.stopPropagation();
+})

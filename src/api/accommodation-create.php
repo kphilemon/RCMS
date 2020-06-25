@@ -113,8 +113,9 @@ function validate_request()
 
 function process_file_upload(): string
 {
-    $file_name = substr(preg_replace('/[^A-Za-z0-9 \.\-_]/', '', $_FILES['supporting-docs']['name']), 0, -4)
-        . '_' . time() . '.pdf';
+
+    // prepend file name with timestamp
+    $file_name = time() . '_' . preg_replace('/[^A-Za-z0-9 \.\-_]/', '', $_FILES['supporting-docs']['name']);
 
     $dest = ACCOMMODATION_UPLOAD_PATH . $file_name;
     if (!move_uploaded_file($_FILES['supporting-docs']['tmp_name'], $dest)) {

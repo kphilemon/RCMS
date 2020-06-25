@@ -182,14 +182,14 @@ if (isset($_SESSION['user_id'])) {
                             <?php else: ?>
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-primary">Food service unavailable</h5>
+                                        <h5 class="modal-title text-primary">Food pre-ordering unavailable</h5>
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span>&times;</span>
                                         </button>
                                     </div>
 
                                     <div class="modal-body text-secondary">
-                                        <p>Sorry, food pre-ordering is unavailable for <?= $date->format('j F Y') ?></p>
+                                        <p>Sorry, there's currently no food menu for <?= $date->format('j F Y') ?>. Please try again tomorrow.</p>
                                     </div>
 
                                     <div class="modal-footer">
