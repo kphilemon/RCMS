@@ -103,7 +103,7 @@ class UserActivityModel
     {
 
         try {
-            $stmt = $this->connection->prepare('SELECT * FROM user_activity INNER JOIN user_activty.activity_id ON activty.id  WHERE id = ?');
+            $stmt = $this->connection->prepare('SELECT activity_id, img, name, activity_date FROM user_activity INNER JOIN activity ON user_activity.activity_id = activity.id WHERE user_activity.user_id = ? ORDER BY activity_date');
             $stmt->execute([$id]);
             $data = $stmt->fetchAll();
 

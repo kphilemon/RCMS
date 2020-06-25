@@ -189,11 +189,29 @@ include '../src/templates/navbar.php';
                         <span>&times;</span>
                     </button>
                 </div>
+                <?php
+                // for the user who has completed the profile
+                if (isset($_SESSION['user_id'])) {
+                    // user is logged in, load profile from db
+                    try {
+                        $db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
+                        // set to true if any of the db actions failed
+                        $server_err = false;
+                        $profile = new UMStudentModel($db->getConnection());
+                        $data = $profile->getDetailsById($_SESSION['user_id']);
+
+                    } catch (PDOException $exception) {
+                        error_log('Profile: getDetailsById: ' . $exception->getMessage() . 'id: ' . $_SESSION['user_id']);
+                        $server_err = true;
+                    }
+                    $db->closeConnection();
+                }
+                ?>
             <?php endif; ?>
         <?php endif; ?>
 
         <!--For notification of the password change-->
-        <?php if (isset($_POST['pass_delete_acc']) && !empty($_POST['newPass'])): ?>
+        <?php if (isset($_POST['pass_delete_acc']) && !empty($_POST['pass_delete_acc'])): ?>
             <?php if (!$delete_acc): ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     You have entered the wrong password.
