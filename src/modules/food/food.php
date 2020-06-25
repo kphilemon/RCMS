@@ -73,8 +73,8 @@ if (isset($_SESSION['user_id'])) {
             <?php if (!$not_found): ?>
 
                 <div class="card p-4 mb-4">
-                    <h5 class="text-primary m-0">Welcome to KK<?= $_SESSION['user_college_id'] ?>'s Food Planner!</h5>
-                    <p class="text-secondary m-0">Click on the dates in the calendar to place or check your order.</p>
+                    <h5 class="text-primary m-0">Welcome to KK<?= $_SESSION['user_college_id'] ?>'s Dinner Planner!</h5>
+                    <p class="text-secondary m-0">Click on the dates in the calendar to place or check your dinner orders.</p>
                 </div>
 
                 <div class="row">
