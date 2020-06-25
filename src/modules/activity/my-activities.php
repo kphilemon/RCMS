@@ -26,13 +26,11 @@ if (isset($_SESSION['user_id'])) {
         $today = date('Y-m-d');
 
         foreach ($all_activities as $key => $value) {
-            if ($value['activity_date'] < $next_monday) {
-                $this_week[$key] = $value;
-                unset($all_activities[$key]);
-            }
-
             if ($value['activity_date'] < $today) {
                 $past[$key] = $value;
+                unset($all_activities[$key]);
+            }else if ($value['activity_date'] < $next_monday) {
+                $this_week[$key] = $value;
                 unset($all_activities[$key]);
             }
         }
