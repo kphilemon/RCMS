@@ -32,7 +32,7 @@ if (isset($_SESSION['user_id'])) {
             }
 
             if ($value['activity_date'] < $today) {
-                $today[$key] = $value;
+                $past[$key] = $value;
                 unset($all_activities[$key]);
             }
         }
