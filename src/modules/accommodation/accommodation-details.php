@@ -182,11 +182,6 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-outline-primary my-2 px-4 "
-                                id="submit">
-                            Edit
-                        </button>
-
                         <button type="submit" class="btn btn-primary ml-3 my-2 px-4 float-right"
                                 id="submit">
                             Edit
