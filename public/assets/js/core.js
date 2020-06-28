@@ -11,6 +11,11 @@ function hideError(elem) {
     $(elem).removeClass('is-invalid');
 }
 
+// padId pads an id with leading zeros
+function padId(num, size) {
+    return ('0000000000' + num).substr(-size);
+}
+
 $('#si-alert, #su-alert, #fp-alert').hide();
 
 $('#si-alert .close').click(function () {
@@ -139,7 +144,6 @@ $('#su-form').submit(function (event) {
                 if (xhr.status === 400) {
                     // Bad request
                     if (xhr.responseText) {
-                        console.log(xhr.responseText)
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
                         for (let key in response.error) {
@@ -200,7 +204,6 @@ $('#fp-form').submit(function (event) {
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         for (let key in response.error) {
                             if (response.error.hasOwnProperty(key)) {
                                 showError('#' + key, response.error[key]);
@@ -211,7 +214,6 @@ $('#fp-form').submit(function (event) {
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
-
                         $('#fp-alert > span').text(response.error);
                         $('#fp-alert').show();
                     }

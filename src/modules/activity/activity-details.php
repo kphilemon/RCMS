@@ -249,7 +249,7 @@ if ($activity_id != 0) {
                                 <p>Warning: You are cancelling your registration for <b><?= $record['name'] ?></b>. Are you sure?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary mr-2" data-dismiss="modal">No, do not
+                                <button type="button" class="btn btn-outline-primary mr-2" data-dismiss="modal">No, do not
                                     cancel
                                 </button>
                                 <form action="" method="post">

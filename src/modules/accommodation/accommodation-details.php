@@ -32,6 +32,21 @@ if (isset($_SESSION['user_id'])) {
         $not_found = true;
     }
 }
+
+function createStatusBadge(int $status): string
+{
+    switch ($status) {
+        case STATUS_SUBMITTED:
+            return '<span class="badge badge-warning">Submitted</span>';
+        case STATUS_APPROVED:
+            return '<span class="badge badge-success">Approved</span>';
+        case STATUS_REJECTED:
+            return '<span class="badge badge-danger">Rejected</span>';
+        default:
+            return '';
+    }
+}
+
 ?>
 
 <main class="container">
@@ -67,7 +82,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="row">
                         <div class="col-lg-6">
                             <h5 class="text-primary m-0">Accommodation Application
-                                #<?= sprintf('%04d', $accommodation_id) ?></h5>
+                                #<?= sprintf('%04d', $accommodation_id) ?> <?= createStatusBadge($record['status']) ?></h5>
                             <p class="text-secondary m-0">Submitted on <?php
                                 $datetime = date_create_from_format('Y-m-d H:i:s', $record['created_at']);
                                 echo $datetime->format('j F Y') ?></p>
@@ -182,23 +197,50 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary ml-3 my-2 px-4 float-right"
-                                id="submit">
-                            Edit
-                        </button>
-                        <button type="button" data-id="<?= $record['id'] ?>"
-                                class="btn btn-danger ml-3 my-2 px-4 float-right"
-                                id="delete">
+                        <?php if ($record['status'] == STATUS_SUBMITTED): ?>
+                            <button type="submit" class="btn btn-primary ml-3 my-2 px-4 float-right"
+                                    id="submit">
+                                Edit
+                            </button>
+                        <?php endif; ?>
+
+                        <button type="button" class="btn btn-danger ml-3 my-2 px-4 float-right"
+                                id="delete" data-toggle="modal" data-target="#modal-delete-accommodation">
                             Delete
                         </button>
 
-                        <button type="button"
-                                class="btn btn-danger ml-3 my-2 px-4 float-right"
+                        <button type="button" class="btn btn-danger ml-3 my-2 px-4 float-right"
                                 id="cancel">
                             Cancel
                         </button>
-
                     </form>
+                </div>
+
+                <div class="modal fade" id="modal-delete-accommodation" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title text-primary">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body text-secondary">
+                                <p>Warning: You are deleting your accommodation application
+                                    <b>#<?= sprintf('%04d', $accommodation_id) ?></b>. Are you sure?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary mr-2" data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="button" id="confirm-delete" data-id="<?= $record['id'] ?>" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php else: include '../src/templates/server_err.php'; endif; ?>
         <?php else : include '../src/templates/404.php'; endif; ?>

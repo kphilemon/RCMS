@@ -1,11 +1,11 @@
 const MAX_LENGTH = 500;
 let problemtype = $('#type'), problemlocation = $('#location'), problemdetail = $('#details'), problemimage = $('#img'),
-    alert = $('#error-alert');
+    alertError = $('#error-alert');
 
-alert.hide();
+alertError.hide();
 
 $('#error-alert.close').click(function () {
-    alert.hide();
+    alertError.hide();
 });
 
 problemtype.change(function () {
@@ -105,7 +105,7 @@ $('#new-issue').submit(function (event) {
                 console.log(data);
                 let response = JSON.parse(data);
                 console.log(response.id);
-                window.location.href = '/issues/' + pad(response.id, 4);
+                window.location.href = '/issues/' + padId(response.id, 4);
             },
             error: function (xhr) {
                 if (xhr.status === 400) {
@@ -124,31 +124,14 @@ $('#new-issue').submit(function (event) {
                 } else if (xhr.status === 401) {
                     // User not logged in
                     $('#error-alert > span').text('Please sign in to submit your report.');
-                    alert.show();
+                    alertError.show();
 
                 } else {
                     // Server errors
                     $('#error-alert > span').text('Opps, your submission has failed due to some server issues. Please try again later.');
-                    alert.show();
+                    alertError.show();
                 }
             },
         });
     }
 })
-
-// showError sets error message on the general sibling of the selector that is passed in and show error
-function showError(elem, msg = '') {
-    if (msg !== '') {
-        $(elem + ' ~ .invalid-feedback').html(msg);
-    }
-
-    $(elem).addClass('is-invalid');
-}
-
-function hideError(elem) {
-    $(elem).removeClass('is-invalid');
-}
-
-function pad(num, size) {
-    return ('000' + num).substr(-size);
-}

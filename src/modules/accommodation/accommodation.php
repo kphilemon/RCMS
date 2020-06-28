@@ -23,6 +23,12 @@ if (isset($_SESSION['user_id'])) {
 <main class="container">
     <?php if (isset($_SESSION['user_id'])) : ?>
         <?php if (!$server_err) : ?>
+
+            <div class="alert alert-warning fade show" id="error-alert" role="alert">
+                <span></span>
+                <button type="button" class="close"><span>&times;</span></button>
+            </div>
+
             <div class="card p-4 mb-4">
                 <h5 class="text-primary m-0">Apply for accommodation at University of Malaya</h5>
                 <p class="text-secondary m-0">Submit, view, update or cancel your accommodation application all in one
@@ -50,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
                         <?php foreach ($records as $record): ?>
                             <tr class="clickable">
                                 <td></td>
-                                <td><?= sprintf( '%04d', $record['id'] ) ?></td>
+                                <td><?= sprintf('%04d', $record['id']) ?></td>
                                 <td><?= $record['check_in_date'] ?></td>
                                 <td><?= $record['check_out_date'] ?></td>
                                 <td><?= $record['college_id'] ?></td>
@@ -60,6 +66,33 @@ if (isset($_SESSION['user_id'])) {
                         <?php endforeach; ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modal-delete-accommodation" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title text-primary">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body text-secondary">
+                            <p>Warning: You are deleting your accommodation application <b id="accommodation-id"></b>.
+                                Are you sure?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary mr-2" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="button" id="confirm-delete" data-id="" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php else: include '../src/templates/server_err.php'; endif; ?>

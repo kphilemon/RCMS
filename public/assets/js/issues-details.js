@@ -1,13 +1,13 @@
 $("#type, #location, #img, #details").attr("disabled", "disabled");
 const MAX_LENGTH = 500;
 let problemtype = $('#type'), problemlocation = $('#location'), problemdetail = $('#details'), problemimage = $('#img'),
-    alert = $('#error-alert');
+    alertError = $('#error-alert');
 
-alert.hide();
+alertError.hide();
 $('#cancel').hide();
 
 $('#error-alert.close').click(function () {
-    alert.hide();
+    alertError.hide();
 });
 
 problemtype.change(function () {
@@ -131,48 +131,34 @@ $('#new-issue').submit(function (event) {
                 } else if (xhr.status === 401) {
                     // User not logged in
                     $('#error-alert > span').text('Please sign in to submit your report.');
-                    alert.show();
+                    alertError.show();
 
                 } else {
                     // Server errors
                     $('#error-alert > span').text('Opps, your submission has failed due to some server issues. Please try again later.');
-                    alert.show();
+                    alertError.show();
                 }
             },
         });
     }
 })
 
-// showError sets error message on the general sibling of the selector that is passed in and show error
-function showError(elem, msg = '') {
-    if (msg !== '') {
-        $(elem + ' ~ .invalid-feedback').html(msg);
-    }
-
-    $(elem).addClass('is-invalid');
-}
-
-function hideError(elem) {
-    $(elem).removeClass('is-invalid');
-}
-
-function pad(num, size) {
-    return ('000' + num).substr(-size);
-}
-
-$('#delete').click(function (event) {
+$('#confirm-delete').click(function (event) {
     let id = $(this).data('id');
     $.ajax({
         url: '/api/issues/delete/' + id,
         success: function (data) {
             console.log(data);
+            $('#modal-delete-issue').modal('hide');
             window.location.href = '/issues';
         },
         error: function (xhr) {
             console.log(xhr.responseText);
+            $('#modal-delete-issue').modal('hide');
+            $('#error-alert > span').text('Opps, your deletion has failed due to some server issues. Please try again.');
+            alertError.show();
         }
     });
-    event.stopPropagation();
 })
 
 $('#cancel').click(function () {

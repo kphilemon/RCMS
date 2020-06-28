@@ -1,5 +1,4 @@
 $("#college, #check-in, #check-out, #supporting-docs, #purpose").attr("disabled", "disabled");
-
 const MAX_LENGTH = 5000;
 let college = $('#college'), checkIn = $('#check-in'), checkOut = $('#check-out'),
     supportingDocs = $('#supporting-docs'), purpose = $('#purpose'), alertError = $('#error-alert');
@@ -143,7 +142,6 @@ $('#details').submit(function (event) {
             error: function (xhr) {
                 if (xhr.status === 400) {
                     // Bad request
-
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
@@ -170,24 +168,22 @@ $('#details').submit(function (event) {
 
 })
 
-function pad(num, size) {
-    return ('000' + num).substr(-size);
-}
-
-
-$('#delete').click(function (event) {
+$('#confirm-delete').click(function (event) {
     let id = $(this).data('id');
     $.ajax({
         url: '/api/accommodation/delete/' + id,
         success: function (data) {
             console.log(data);
+            $('#modal-delete-accommodation').modal('hide');
             window.location.href = '/accommodation';
         },
         error: function (xhr) {
             console.log(xhr.responseText);
+            $('#modal-delete-accommodation').modal('hide');
+            $('#error-alert > span').text('Opps, your deletion has failed due to some server issues. Please try again.');
+            alertError.show();
         }
     });
-    event.stopPropagation();
 })
 
 $('#cancel').click(function () {

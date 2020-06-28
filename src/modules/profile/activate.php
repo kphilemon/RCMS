@@ -3,8 +3,6 @@ include '../src/templates/header.php';
 include '../src/templates/navbar.php';
 include '../src/models/UserModel.php';
 
-var_dump($_POST);
-
 $matches = [];
 preg_match('/^\/activate\/([a-f0-9]{32})\/?$/i', $_SERVER['REQUEST_URI'], $matches);
 $hash = trim($matches[1]);

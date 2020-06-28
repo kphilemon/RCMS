@@ -1,11 +1,11 @@
 const MAX_LENGTH = 5000;
 let college = $('#college'), checkIn = $('#check-in'), checkOut = $('#check-out'),
-    supportingDocs = $('#supporting-docs'), purpose = $('#purpose'), alert = $('#error-alert');
+    supportingDocs = $('#supporting-docs'), purpose = $('#purpose'), alertError = $('#error-alert');
 
-alert.hide();
+alertError.hide();
 
 $('#error-alert .close').click(function () {
-    alert.hide();
+    alertError.hide();
 });
 
 college.change(function () {
@@ -128,12 +128,11 @@ $('#details').submit(function (event) {
             success: function (data) {
                 let response = JSON.parse(data);
                 console.log(response.id);
-                window.location.href = '/accommodation/' + pad(response.id, 4);
+                window.location.href = '/accommodation/' + padId(response.id, 4);
             },
             error: function (xhr) {
                 if (xhr.status === 400) {
                     // Bad request
-
                     if (xhr.responseText) {
                         let response = JSON.parse(xhr.responseText);
                         console.log(response);
@@ -147,20 +146,14 @@ $('#details').submit(function (event) {
                 } else if (xhr.status === 401) {
                     // User not logged in
                     $('#error-alert > span').text('Please sign in to submit your application.');
-                    alert.show();
+                    alertError.show();
 
                 } else {
                     // Server errors
                     $('#error-alert > span').text('Opps, your submission has failed due to some server issues. Please try again later.');
-                    alert.show();
+                    alertError.show();
                 }
             },
         });
     }
-
 })
-
-function pad(num, size) {
-    return ('000' + num).substr(-size);
-}
-
