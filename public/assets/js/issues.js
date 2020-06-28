@@ -29,11 +29,12 @@ let table = $('#table').DataTable({
     }, {
         "targets": 6,
         "render": function (data, type, row) {
-
             if (row[5] === '0') {
                 return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a> | <a href="/issues/' + row[1] + '">Edit</a> </span>';
             } else if (row[5] === '1') {
                 return '<span><a class="delete-record" href="#" data-id="' + row[1] + '">Delete</a></span>'
+            } else {
+                return '';
             }
         }
     }],

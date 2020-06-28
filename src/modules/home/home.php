@@ -4,16 +4,37 @@ include '../src/templates/header.php';
 include '../src/templates/navbar.php';
 include '../src/models/ActivityModel.php';
 
-$db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
-$activity_model = new ActivityModel($db->getConnection());
-
 $carousel_images = array_diff(scandir(CAROUSEL_IMAGES_PATH, SCANDIR_SORT_DESCENDING), array('.', '..'));
 
-// read from db and populate these arrays
+$db = new Database(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD);
+$server_err = false;
 
-$all_activities = $activity_model->getAllActivities() ;
-$this_weekend_activities = $activity_model->getThisWeekendActivities() ;
-$this_month_activities = $activity_model->getThisMonthActivities() ;
+try {
+    $activity_model = new ActivityModel($db->getConnection());
+    $all_activities = $activity_model->getAll();
+
+} catch (PDOException $exception) {
+    $server_err = true;
+}
+
+if (!empty($all_activities)) {
+
+    $this_week_activities = [];
+    $this_month_activities = [];
+
+    $next_monday = date('Y-m-d', strtotime('monday next week'));
+    $next_month_first_day = date('Y-m-d', strtotime('first day of next month'));
+
+    foreach ($all_activities as $activity) {
+        if ($activity['activity_date'] < $next_monday){
+            array_push($this_week_activities, $activity);
+        }
+
+        if ($activity['activity_date'] < $next_month_first_day){
+            array_push($this_month_activities, $activity);
+        }
+    }
+}
 ?>
 
 <main class="container">
@@ -46,7 +67,7 @@ $this_month_activities = $activity_model->getThisMonthActivities() ;
 
     <nav class="nav nav-tabs mb-4" id="tabs">
         <a class="nav-item nav-link px-4 active" href="#all" data-toggle="tab">All</a>
-        <a class="nav-item nav-link" href="#this-weekend" data-toggle="tab">This Weekend</a>
+        <a class="nav-item nav-link" href="#this-week" data-toggle="tab">This Week</a>
         <a class="nav-item nav-link" href="#this-month" data-toggle="tab">This Month</a>
     </nav>
 
@@ -54,66 +75,101 @@ $this_month_activities = $activity_model->getThisMonthActivities() ;
         <div class="tab-pane fade show active" id="all">
             <div class="row">
 
-                <?php foreach ($all_activities as $activity): ?>
-                    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-                        <div class="card raised-card">
-                            <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
-                            <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date'])) ?></h6>
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
-                                <div class="details-big text-primary my-2">
-                                    <h5 class="card-title"><?= $activity['name'] ?></h5>
+                <?php if (!$server_err): ?>
+                    <?php if (!empty($all_activities)): ?>
+                        <?php foreach ($all_activities as $activity): ?>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+                                <div class="card raised-card">
+                                    <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('D, d F Y', strtotime($activity['activity_date'])) ?></h6>
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('h:i A', strtotime($activity['activity_date'])) ?></h6>
+                                        <div class="details-big text-primary my-2">
+                                            <h5 class="card-title"><?= $activity['name'] ?></h5>
+                                        </div>
+                                    </div>
+                                    <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col my-5">
+                            <p class="text-center">No upcoming activities found.</p>
                         </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col my-5">
+                        <p class="text-center">Opps! We are having difficulties loading the activities.<br>Please try
+                            again later.</p>
                     </div>
-                <?php endforeach; ?>
-
+                <?php endif; ?>
             </div>
         </div>
 
-        <div class="tab-pane fade" id="this-weekend">
+        <div class="tab-pane fade" id="this-week">
             <div class="row">
 
-                <?php foreach ($this_weekend_activities as $activity): ?>
-                    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-                        <div class="card raised-card">
-                            <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
-                            <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date'])) ?></h6>
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
-                                <div class="details-big text-primary my-2">
-                                    <h5 class="card-title"><?= $activity['name'] ?></h5>
+                <?php if (!$server_err): ?>
+                    <?php if (!empty($this_week_activities)): ?>
+                        <?php foreach ($this_week_activities as $activity): ?>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+                                <div class="card raised-card">
+                                    <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('D, d F Y', strtotime($activity['activity_date'])) ?></h6>
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('h:i A', strtotime($activity['activity_date'])) ?></h6>
+                                        <div class="details-big text-primary my-2">
+                                            <h5 class="card-title"><?= $activity['name'] ?></h5>
+                                        </div>
+                                    </div>
+                                    <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col my-5">
+                            <p class="text-center">No upcoming activities found for this week.</p>
                         </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col my-5">
+                        <p class="text-center">Opps! We are having difficulties loading the activities.<br>Please try
+                            again later.</p>
                     </div>
-                <?php endforeach; ?>
-
+                <?php endif; ?>
             </div>
         </div>
 
         <div class="tab-pane fade " id="this-month">
             <div class="row">
-
-                <?php foreach ($this_month_activities as $activity): ?>
-                    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-                        <div class="card raised-card">
-                            <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
-                            <div class="card-body">
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("d F Y ", strtotime($activity['activity_date']))?></h6>
-                                <h6 class="card-subtitle text-primary-purple mt-1"><?= date("h:i a", strtotime($activity['activity_date'])) ?></h6>
-                                <div class="details-big text-primary my-2">
-                                    <h5 class="card-title"><?= $activity['name'] ?></h5>
+                <?php if (!$server_err): ?>
+                    <?php if (!empty($this_month_activities)): ?>
+                        <?php foreach ($this_month_activities as $activity): ?>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+                                <div class="card raised-card">
+                                    <img class="card-img-top card-img-150" src="<?= $activity['img'] ?>">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('D, d F Y', strtotime($activity['activity_date'])) ?></h6>
+                                        <h6 class="card-subtitle text-primary-purple mt-1"><?= date('h:i A', strtotime($activity['activity_date'])) ?></h6>
+                                        <div class="details-big text-primary my-2">
+                                            <h5 class="card-title"><?= $activity['name'] ?></h5>
+                                        </div>
+                                    </div>
+                                    <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
                                 </div>
                             </div>
-                            <a href="<?= '/activities/' . $activity['id'] ?>" class="stretched-link"></a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col my-5">
+                            <p class="text-center">No upcoming activities found for this month.</p>
                         </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col my-5">
+                        <p class="text-center">Opps! We are having difficulties loading the activities.<br>Please try
+                            again later.</p>
                     </div>
-                <?php endforeach; ?>
-
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -125,5 +181,5 @@ $this_month_activities = $activity_model->getThisMonthActivities() ;
 <script src="/assets/js/vendor/bootstrap.bundle.js"></script>
 <script src="/assets/js/core.js"></script>
 
-<?php include '../src/templates/footer.php'?>
+<?php include '../src/templates/footer.php' ?>
 
