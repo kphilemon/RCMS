@@ -180,8 +180,14 @@ function createStatusBadge(int $status): string
                                         <input type="file" class="custom-file-input" id="supporting-docs"
                                                name="supporting-docs" accept="application/pdf">
                                         <div class="invalid-feedback"></div>
-                                        <small class="form-text text-muted">Document such as formal letters/medical
-                                            certificate (PDF, 1MB Max)</small>
+                                        <?php if (empty($record['supporting_docs'])): ?>
+                                            <small class="form-text text-muted">Document such as formal letters/medical
+                                                certificate (PDF, 1MB Max)</small>
+                                        <?php else: ?>
+                                            <a href="/api/download/accommodation/<?= $record['id'] ?>" target="_blank">
+                                                <small>Download uploaded file</small>
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 
@@ -235,7 +241,8 @@ function createStatusBadge(int $status): string
                                 <button type="button" class="btn btn-outline-primary mr-2" data-dismiss="modal">
                                     Cancel
                                 </button>
-                                <button type="button" id="confirm-delete" data-id="<?= $record['id'] ?>" class="btn btn-danger">
+                                <button type="button" id="confirm-delete" data-id="<?= $record['id'] ?>"
+                                        class="btn btn-danger">
                                     Delete
                                 </button>
                             </div>

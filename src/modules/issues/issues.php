@@ -36,7 +36,7 @@ if (isset($_SESSION['user_id'])) {
 
             <div class="card p-4">
                 <div class="table-responsive">
-                    <a href="issues/new" type="button" class="btn btn-primary float-none d-block float-md-right px-4 mb-4 mb-md-0">Report New</a>
+                    <a href="/issues/new" type="button" class="btn btn-primary float-none d-block float-md-right px-4 mb-4 mb-md-0">Report New</a>
 
                     <table class="table header-border table-hover w-100 py-3 table-responsive-sm" id="table">
                         <thead>

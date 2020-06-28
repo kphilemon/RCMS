@@ -31,6 +31,9 @@ if (preg_match('/^\/api\/login\/?$/i', $_SERVER['REQUEST_URI'])) {
 } elseif (preg_match('/^\/api\/issues\/delete\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {
     include '../src/api/issues-delete.php';
 
+} elseif (preg_match('/^\/api\/download\/(accommodation|issue)\/\d+\/?$/i', $_SERVER['REQUEST_URI'])) {
+    include '../src/api/download.php';
+
 } else {
     http_response_code(404);
 }

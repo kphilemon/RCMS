@@ -324,9 +324,15 @@ function createStatusBadge(int $status): string
                                             <input id="img" type="file" accept="image/*" class="custom-file-input"
                                                    name="img">
                                             <div class="invalid-feedback"></div>
-                                            <small class="form-text text-muted">Note: only jpg , jpeg , png and max size
-                                                1
-                                                MB.</small>
+                                            <?php if (empty($record['img'])): ?>
+                                                <small class="form-text text-muted">Note: only jpg , jpeg , png and max
+                                                    size 1 MB.
+                                                </small>
+                                            <?php else: ?>
+                                                <a href="/api/download/issue/<?= $record['id'] ?>" target="_blank">
+                                                    <small>Download uploaded image</small>
+                                                </a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>

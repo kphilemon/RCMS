@@ -37,7 +37,7 @@ if (isset($_SESSION['user_id'])) {
 
             <div class="card p-4">
                 <div>
-                    <a href="accommodation/new" type="button" class="btn btn-primary float-none d-block
+                    <a href="/accommodation/new" type="button" class="btn btn-primary float-none d-block
                    float-md-right px-4 mb-4 mb-md-0">Submit New</a>
 
                     <table class="table table-responsive-md table-hover w-100 py-3" id="table">
