@@ -108,7 +108,7 @@ class IssueModel
                 }
 
                 $sql = 'UPDATE issue SET type = :type, location = :location, details = :details, img = :img 
-                    WHERE id = :id AND user_id = :user_id';
+                    WHERE id = :id AND user_id = :user_id AND status = :status';
                 $stmt = $this->connection->prepare($sql);
                 $success = $stmt->execute([
                     ':id' => $id,
@@ -116,10 +116,11 @@ class IssueModel
                     ':type' => $problemtype,
                     ':location' => $problemlocation,
                     ':details' => $problemdetail,
-                    ':img' => $problemimage
+                    ':img' => $problemimage,
+                    ':status' => STATUS_PENDING
                 ]);
             } else{
-                $sql = 'UPDATE issue SET type = :type, location = :location, details = :details WHERE id = :id AND user_id = :user_id';
+                $sql = 'UPDATE issue SET type = :type, location = :location, details = :details WHERE id = :id AND user_id = :user_id AND status = :status';
                 $stmt = $this->connection->prepare($sql);
                 $success = $stmt->execute([
                     ':id' => $id,
@@ -127,6 +128,7 @@ class IssueModel
                     ':type' => $problemtype,
                     ':location' => $problemlocation,
                     ':details' => $problemdetail,
+                    ':status' => STATUS_PENDING
                 ]);
             }
 
@@ -156,8 +158,12 @@ class IssueModel
                 unlink(ISSUES_UPLOAD_PATH.$data['img']);
             }
 
-            $stmt = $this->connection->prepare('DELETE FROM issue WHERE id = ? AND user_id = ?');
-            return $stmt->execute([$id, $userId]);
+            $stmt = $this->connection->prepare('DELETE FROM issue WHERE id = :id AND user_id = :user_id AND status <> :status');
+            return $stmt->execute([
+                ':id' => $id,
+                ':user_id' => $userId,
+                ':status' => STATUS_IN_PROGRESS
+            ]);
 
         } catch (PDOException $exception) {
             error_log('IssueModel: delete: ' . $exception->getMessage() . 'id: ' . $id . 'userId: ' . $userId);
