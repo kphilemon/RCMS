@@ -33,6 +33,60 @@ To contribute, please follow the workflow below. **Only** push directly to the `
 7. Open a merge request on github to merge your branch to master.
     https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
 
+## PHP Styles
+- Common File Structure
+    ```php
+    <?php
+    
+    // this block is not needed if there's no pre-processing needed
+    // request validation, connect to database
+    // data processing/retrieval
+    
+    ?>
+    
+    <?php include '../src/templates/header.php' ?>
+    <?php include '../src/templates/navbar.php' ?>
+    
+    
+    <!-- html codes here... -->
+    
+    
+    <?php include '../src/templates/footer.php' ?>
+    ```
+
+- Use PHP short echo tags `<?= ?>`
+    ```php
+    <title><?= $title; ?></title>
+    
+    // Instead of ...
+    
+    <title><?php echo $title; ?></title>
+    ```
+
+- Use alternative syntax for control structure
+    ```php
+    <?php if ($signed_in) : ?>
+        <!-- html codes to show if user is signed in... -->
+    <?php else : ?>
+        <!-- html codes to show if user is NOT signed in... -->
+    <?php endif; ?>
+    
+    
+    <?php foreach($datas as $data): ?>
+        <!-- html codes to be repeatedly used -->
+    <?php endforeach; ?>
+    ```
+
+- DO NOT ECHO BLOCKS OF HTML
+
+
+## Database Naming Rules
+- Only use lowercase letters and underscores for all names (table, key, field names).
+- Do NOT use camel case.
+- use underscores to replace space if needed.
+- use only "id" with type integer, autoincrement for primary key of a table, strictly no "user_id" or "student_id".
+- "user_id" or "student_id" only for foreign key.
+
 ## Project Folder Structure
 The folder structure for this project:
 
