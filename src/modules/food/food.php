@@ -78,13 +78,13 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="row">
-                    <div class=" col-lg-8">
-                        <div class="p-4 card">
+                    <div class="col-lg-8">
+                        <div class="p-4 card mb-4">
                             <div id="calendar"></div>
                         </div>
                     </div>
 
-                    <div class=" col-lg-4">
+                    <div class="col-lg-4">
                         <div class="p-4 card ">
                             <?php if ($date_selected): ?>
                                 <h5 class="card-title mb-4"><?= $date->format('j F Y') ?></h5>
@@ -131,7 +131,7 @@ if (isset($_SESSION['user_id'])) {
                                             <div class="row no-gutters mb-3">
                                                 <div class="col">
                                                     <img class="food-img-left"
-                                                         src="<?= '/assets/img/food/' . $food['img'] ?>">
+                                                         src="<?= $food['img'] ?>">
                                                 </div>
                                                 <div class="col-5 align-self-center">
                                                     <h5 class="text-secondary"><?= $food['name'] ?></h5>

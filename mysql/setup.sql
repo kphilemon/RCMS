@@ -15,17 +15,17 @@ CREATE TABLE um_database
 );
 INSERT INTO um_database (name, email, matrix_no, college_id, faculty, course)
 VALUES ('Khor Philemon', 'wif180024@siswa.um.edu.my', 17175579, 7,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering'),
+        'Faculty of Computer Science and Information Technology', 'Software Engineering'),
        ('See Boon Pu', 'wif180067@siswa.um.edu.my', 17076249, 8,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering'),
+        'Faculty of Computer Science and Information Technology', 'Software Engineering'),
        ('Lee Jih Shian', 'wif180029@siswa.um.edu.my', 17126198, 10,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering'),
+        'Faculty of Computer Science and Information Technology', 'Software Engineering'),
        ('Lim Jin Wei', 'wif180030@siswa.um.edu.my', 17179635, 2,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering'),
+        'Faculty of Computer Science and Information Technology', 'Software Engineering'),
        ('Lo Zhi Kiat', 'wif180031@siswa.um.edu.my', 17145459, 3,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering'),
+        'Faculty of Computer Science and Information Technology', 'Software Engineering'),
        ('Lau Xin Yi', 'wif180028@siswa.um.edu.my', 17066424, 12,
-        'Faculty of Computer Science and Information Technlogy', 'Software Engineering');
+        'Faculty of Computer Science and Information Technology', 'Software Engineering');
 
 ########################################################################################################################
 
@@ -54,7 +54,7 @@ CREATE TABLE student
 # Test account
 # email: test@siswa.um.edu.my, password: test123
 INSERT INTO student (activated, hash, name, email, matrix_no, college_id, faculty, course, password)
-VALUES (1, 'hash', 'test account', 'test@siswa.um.edu.my', 123456, 7, 'faculty', 'course',
+VALUES (1, 'hash', 'Test account', 'test@siswa.um.edu.my', 123456, 7, 'faculty', 'course',
         'cc03e747a6afbbcbf8be7668acfebee5');
 
 ########################################################################################################################
@@ -118,18 +118,18 @@ CREATE TABLE food
     img   VARCHAR(2083) NOT NULL
 );
 INSERT INTO food(name, price, img)
-VALUES ('Fried Rice', 5.50, 'nasigoreng.png'),
-       ('Satay', 5.00, 'satay.png'),
-       ('Spaghetti', 4.50, 'spaghetti.png'),
-       ('Tomyam ', 6.50, 'tomyam.png'),
-       ('Chicken Rice ', 4.50, 'nasiayam.png'),
-       ('Iced Milo ', 1.50, 'milo.png'),
-       ('Syrup', 1.20, 'sirap.png'),
-       ('Mango Juice', 2.50, 'mango.png'),
-       ('Teh', 2.00, 'Teh.png'),
-       ('Fried Noodles ', 4.00, 'friednoodles.png'),
-       ('Cake ', 2.50, 'cake.png'),
-       ('Pizza Bread ', 3.50, 'pizzabread.png');
+VALUES ('Fried Rice', 5.50, '/assets/img/food/nasigoreng.png'),
+       ('Satay', 5.00, '/assets/img/food/satay.png'),
+       ('Spaghetti', 4.50, '/assets/img/food/spaghetti.png'),
+       ('Tomyam ', 6.50, '/assets/img/food/tomyam.png'),
+       ('Chicken Rice ', 4.50, '/assets/img/food/nasiayam.png'),
+       ('Iced Milo ', 1.50, '/assets/img/food/milo.png'),
+       ('Syrup', 1.20, '/assets/img/food/sirap.png'),
+       ('Mango Juice', 2.50, '/assets/img/food/mango.png'),
+       ('Teh', 2.00, '/assets/img/food/Teh.png'),
+       ('Fried Noodles ', 4.00, '/assets/img/food/friednoodles.png'),
+       ('Cake ', 2.50, '/assets/img/food/cake.png'),
+       ('Pizza Bread ', 3.50, '/assets/img/food/pizzabread.png');
 
 ########################################################################################################################
 
