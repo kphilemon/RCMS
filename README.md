@@ -4,60 +4,58 @@ A web application to help the students at residential college to register new
 account, view and register for the activities organised by the residential college,
 report an issue found at residential college, order food and apply for accommodation.
 
-## Workflow
-To contribute, please follow the workflow below. **Only** push directly to the `master` branch if you know exactly what you're doing. Evaluate the impact of change before doing so. 
+Note: admin dashboard to be developed. Data management for this MVP user application has to be done via database operations.
 
-1. Make sure your local master is up-to-date.
+## Getting started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+The instructions below could be biased to the LAMP stack as it is being used in development. However, it should be configurable with other stacks.  
+
+1. Clone the repository.
 
     ```
-    git checkout master
-    git pull origin master
+    git clone https://github.com/kphilemon/RCMS.git
     ```
-2. Create a new local branch from your master branch to work on your changes.
-    ```
-    git checkout -b <my-feature-branch>
-    ```
-3. Make changes on your new branch. Add. Commit. Repeat.
-    ```
-    git add .
-    git commit -m "A meaningful commit message"
-    ```
-4. When you are ready to push your branch, make sure it's up-to-date with the remote master first.
-    ```
-    git checkout master
-    git pull origin master
-    git checkout <my-feature-branch>
-    git rebase master
-    ```
-5. Resolve conflicts if there's any using the IDE's tool.
-    https://www.jetbrains.com/help/idea/resolving-conflicts.html
+2. Set the [public](https://github.com/kphilemon/RCMS/tree/master/public) directory as your document root. Guide for 
+   [Apache](https://www.digitalocean.com/community/tutorials/how-to-move-an-apache-web-root-to-a-new-location-on-ubuntu-16-04)
 
-6. Make sure there's no more conflict and you're now ready to push your changes to the remote repository.
+3. Execute [setup.sql](https://github.com/kphilemon/RCMS/blob/master/mysql/setup.sql). This will give you a 
+   fully set up mysql database with dummy data.
     ```
-    git push origin <my-feature-branch>
+    mysql> source mysql/setup.sql
     ```
-7. Open a merge request on github to merge your branch to master.
-    https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
+4. Tweak configurations in [config.php](https://github.com/kphilemon/RCMS/blob/master/config/config.php) as needed. Eg: 
+    database credentials, SMTP server configurations.
 
-## Project Folder Structure
-The folder structure for this particular phase (A simple html web application):
+5. Start your server and you are now good to go. 
 
+## Important Note
+
+**TLDR: Use the tester account credentials to log in if you do not want to go through the hassles.**
 ```
-root/
-├── css/
-├── img/
-├── js/
-├── scripts/
-├── common/
-│   ├── navbar.html
-│   ├── header.html
-│   └── footer.html
-├── index.html
-├── other_pages.html
-├── README.md
-└── .gitignore
+Email     : test@siswa.um.edu.my
+Password  : test123
 ```
+One of the requirements/features of this project is email domain whitelisting. Currently, only email with `@siswa.um.edu.my`
+domain has been whitelisted and thus can be used for registration. Email with other domains will *not* be able to bypass 
+the email validations. 
 
-References:
-- https://medium.com/@nmayurashok/file-and-folder-structure-for-web-development-8c5c83810a5
-- https://www.htmlquick.com/tutorials/organizing-website.html
+Besides, newly-registered user have to activate their account via an account activation link that is sent to their email.
+This feature is implemented to verify the validity of the email addresses of new users. 
+
+Due to these restrictions, you will *not* be able to register nor sign in unless you own a valid email with the specified 
+domain OR you manually disable the email validation across the frontend and backend scripts. (Very inefficient, could be refactored using flags).
+
+Well, if you have a valid email OR you have disabled all the validations, you have one final step to go, that is to whitelist
+yourself in a database table. Well, bear with me :)
+
+Since this is an application for students, we wanted to make sure that only valid students can register. This is mocked by
+checking if the email exists in our "fake" student record table named `um_database`. To whitelist your email, simply insert 
+a record with your valid email into the `um_database` table and you are all set to test out the full features of this system.
+
+## Contributors
+- [kphilemon](https://github.com/kphilemon)
+- [zhikiat62](https://github.com/zhikiat62)
+- [jwlim77](https://github.com/jwlim77)
+- [xinyilau](https://github.com/xinyilau)
+- [JihShian](https://github.com/JihShian)
+- [Aericsee](https://github.com/Aericsee)
